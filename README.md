@@ -63,6 +63,6 @@
 ## This app is presented to you by:
 
 - [Yazeed El-Haj Salem](https://github.com/ysalem-dev-89)
-- [Shatha K. Eqdaih] (https://github.com/shathakh)
-- [Said MADI] (https://github.com/Saeed99Madi)
-- [Nada Suhail Ayesh] (https://github.com/nadasuhailAyesh12)
+- [Shatha K. Eqdaih](https://github.com/shathakh)
+- [Said MADI](https://github.com/Saeed99Madi)
+- [Nada Suhail Ayesh](https://github.com/nadasuhailAyesh12)
