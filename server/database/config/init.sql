@@ -2,6 +2,12 @@ BEGIN;
 
 DROP TABLE IF EXISTS products, categories, users, cart CASCADE;
 
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT
+);
+
 CREATE TABLE products (
   id SERIAL PRIMARY KEY,
   title VARCHAR(100) NOT NULL,
@@ -20,11 +26,6 @@ CREATE TABLE users (
   avatar VARCHAR(255)
 );
 
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  description TEXT
-);
 
 CREATE TABLE cart (
   id SERIAL,
@@ -32,7 +33,7 @@ CREATE TABLE cart (
   product_id INT,
   count decimal NOT NULL DEFAULT 1,
   CONSTRAINT cart_user_fk FOREIGN KEY (user_id) REFERENCES users(id),
-  CONSTRAINT cart_product_fk FOREIGN KEY (product_id) REFERENCES product(id),
+  CONSTRAINT cart_product_fk FOREIGN KEY (product_id) REFERENCES products(id),
   PRIMARY KEY (user_id, product_id)
 );
 
