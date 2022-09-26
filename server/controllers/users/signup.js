@@ -20,7 +20,7 @@ const signup = (req, res, next) => {
     }
     getUserByEmail(email)
       .then((data) => {
-        if (data.rows > 0) {
+        if (data.rows.length > 0) {
           throw new CustomizeError(401, 'this email is in use');
         }
         return data.rows;
