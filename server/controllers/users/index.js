@@ -1,5 +1,3 @@
-const createUser = require('./create');
-const getUserById = require('./getById');
-const getUserByEmail = require('./getByEmail');
+const siginIn = require('./siginIn');
 
-module.exports = { createUser, getUserByEmail, getUserById };
+module.exports = { siginIn };
