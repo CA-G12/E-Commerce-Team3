@@ -3,9 +3,10 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
+const router = require('./routes');
 
 const app = express();
-
+app.use(router);
 app.set('port', process.env.PORT || 8080);
 app.disable('x-powered-by');
 app.use(cookieParser());
