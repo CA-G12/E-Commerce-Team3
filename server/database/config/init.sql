@@ -37,4 +37,47 @@ CREATE TABLE cart (
   PRIMARY KEY (user_id, product_id)
 );
 
+INSERT INTO categories (name, description)
+VALUES 
+('T-Shirts', 'T-Shirts'),
+('Jeans', 'Jeans'),
+('Shoes', 'Shoes');
+
+
+INSERT INTO products (title, description, price, image, category_id)
+VALUES 
+
+('half sleeves T shirts', 
+'Brand: vintage Apparel ,Export quality',
+25.5,
+'https://dummyjson.com/image/i/products/53/2.jpg',
+1),
+
+('printed high quality T shirts', 
+'Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands',
+23,
+'https://dummyjson.com/image/i/products/51/1.png',
+2),
+('Money Heist Printed Summer T Shirts', 
+'Fabric Jercy, Size: M & L Wear Stylish Dual Stiched',
+30,
+'https://dummyjson.com/image/i/products/55/1.jpg',
+1);
+
+
+
+
+
+
+
+INSERT INTO users (name, email, password, avatar) VALUES
+('Test', 'test@hotmail.com' ,'123', NULL),
+('Yazeed', 'yazeed@hotmail.com' ,'123', NULL),
+('Saeed', 'saeed@hotmail.com' ,'123', NULL);
+
+INSERT INTO cart (user_id, product_id, count) VALUES
+(1, 1, 5),
+(1, 2, 3),
+(2, 2, 3);
+
 COMMIT;
