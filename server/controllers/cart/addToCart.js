@@ -1,12 +1,11 @@
 const { addToCartQuery } = require('../../database/queries/cart');
+const CustomizeError = require('../../utils/customError');
 
-const addToCart = (req, res) => {
-  console.log('hr');
+const addToCart = (req, res, next) => {
   const { userId, productId, count } = req.body;
-  console.log(userId, productId, count);
   addToCartQuery({ userId, productId, count })
     .then((data) => res.json(data.rows))
-    .then((data) => console.log(data));
+    .catch((err) => next(new CustomizeError(500, err.message)));
 };
 
 module.exports = addToCart;

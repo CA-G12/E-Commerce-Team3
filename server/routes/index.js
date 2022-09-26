@@ -12,7 +12,7 @@ router.get('/product', (req, res) => res.send('product'));
 router.get('/product/:id', getProduct);
 
 router.get('/cart/:userId', getCart);
-router.get('/cart/', addToCart);
+router.post('/cart/', addToCart);
 router.delete('/cart/', deleteFromCart);
 router.put('/cart/', updateCart);
 
