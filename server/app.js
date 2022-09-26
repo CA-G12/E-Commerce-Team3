@@ -16,6 +16,6 @@ app.use(express.json());
 app.use(compression());
 
 // handling errors
-// app.use(handleClientError, handleServerError);
+app.use(handleClientError, handleServerError);
 
 module.exports = app;
