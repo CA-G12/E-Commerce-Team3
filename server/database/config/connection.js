@@ -11,9 +11,12 @@ switch (NODE_ENV) {
   case 'development':
     DBUrl = DEV_DB_URL;
     break;
+
   case 'testing':
     DBUrl = DEV_DB_URL;
     break;
+
+
   default:
     throw new Error('undifind database url');
 }

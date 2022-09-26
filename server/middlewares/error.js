@@ -5,7 +5,8 @@ const handleClientError = (req, res, next) => {
 
 // eslint-disable-next-line no-unused-vars
 const handleServerError = (error, req, res, next) => {
-  if (error.status !== 500) {
+  if (error.status) {
+    // console.log(error.status);
     res.status(error.status).json({ msg: error.msg, status: error.status });
   } else {
     res.status(500).json({ msg: error.msg, status: error.status });
