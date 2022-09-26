@@ -1,6 +1,6 @@
 # Ecommerce-React
 
-## Live Server [HERE]()
+## Live Server
 
 ---
 
