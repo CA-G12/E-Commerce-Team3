@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
     "dev": "cross-env NODE_ENV=development nodemon server",
-    "test": "cross-env NODE_ENV=testing jest"
+    "test": "cross-env NODE_ENV=testing jest",
+    "heroku-postbuild": "cd client && npm i --force && npm run build"
   },
   "repository": {
     "type": "git",
