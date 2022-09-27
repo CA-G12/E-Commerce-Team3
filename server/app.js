@@ -6,14 +6,17 @@ const { handleClientError, handleServerError } = require('./middlewares/error');
 require('dotenv').config();
 const router = require('./routes');
 
+// Middlewares
 const app = express();
-app.use(router);
 app.set('port', process.env.PORT || 8080);
 app.disable('x-powered-by');
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(compression());
+
+// Routers
+app.use(router);
 
 // handling errors
 app.use(handleClientError, handleServerError);

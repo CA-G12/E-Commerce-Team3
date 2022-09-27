@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="productDetails.css">
+  <title>Product Details</title>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        OREBI
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contacts</a></li>
+        </ul>
+      </nav>
+      <div class="languages">
+        <span><a href="#">EN</a></span>
+        <span><a href="#">AR</a></span>
+      </div>
+    </div>
+  </header>
+  <!-- ./header -->
+  <div class="search-user">
+    <div class="container">
+      <div class="category-sort">
+        <i class="fa-solid fa-arrow-up-wide-short"></i>
+        <span>Shop by Category</span>
+      </div>
+      <div class="search-bar">
+        <form>
+          <input type="search" id='search' name="search" placeholder="Search Products" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </form>
+      </div>
+      <div class="right">
+        <a href="#" class="user-box">
+          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-sort-down"></i>
+        </a>
+        <a href="#" class="user-box" style="display: none;">
+          <img src="#" />
+          <span class="username">Username</span>
+        </a>
+        <a href="#" class="cart-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>1</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- ./search-user -->
+  <div class="product-details">
+    <div class="container">
+      <div class="product-image">
+        <img src="green-t-shirt.jpg" alt="">
+      </div>
+      <div class="product-info">
+        <h2 class="title">Product</h2>
+        <p class="price">$44.00</p>
+        <div class="quantity">
+          <span class="label">Quantity:</span>
+          <div class="quantity-control">
+            <button class="decrease">-</button>
+            <span class="quantity-number">1</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="add-to-cart">
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+        <div class="description">
+          <h3>Description</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima corporis iusto ipsa
+            mollitia, et quia error architecto quisquam. Praesentium, qui hic. Possimus architecto
+            quia
+            nobis voluptas praesentium rerum tempora blanditiis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
