@@ -1,19 +1,37 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 function Filter() {
   return (
     <div className="felters">
-      <div className="price-felter">
-        <label>Price filter</label>
-        <div className="range-value">
-          <label>Min</label>
-          <input type="range" name="min" value="0" min="0" max="1000" />
+      <fieldset className="price-felter">
+        <legend>Price filter</legend>
+        <div className="range-value" id="range">
+          <label htmlFor="min">
+            Min
+            <input
+              type="range"
+              id="min"
+              name="min"
+              min="0"
+              max="1000"
+              onChange={() => {}}
+            />
+          </label>
         </div>
-        <div className="range-value">
-          <label>Max</label>
-          <input type="range" name="max" value="0" min="0" max="1000" />
+        <div className="range-value" id="range">
+          <label htmlFor="max">Max</label>
+          <input
+            type="range"
+            id="max"
+            name="max"
+            value="0"
+            min="0"
+            max="1000"
+            onChange={() => {}}
+          />
         </div>
-      </div>
-      <div className="category-filter">
-        <label>Categories</label>
+      </fieldset>
+      <fieldset className="category-filter">
+        <legend>Categories</legend>
         <ul>
           <li>clothes</li>
           <li>electronic</li>
@@ -22,8 +40,8 @@ function Filter() {
           <li>electronic</li>
           <li>games</li>
         </ul>
-      </div>
+      </fieldset>
     </div>
   );
 }
-export default  Filter;
+export default Filter;
