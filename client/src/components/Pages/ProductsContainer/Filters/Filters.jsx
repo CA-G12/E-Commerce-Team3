@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 function Filter() {
   return (
     <div className="felters">
@@ -33,12 +32,27 @@ function Filter() {
       <fieldset className="category-filter">
         <legend>Categories</legend>
         <ul>
-          <li>clothes</li>
-          <li>electronic</li>
-          <li>games</li>
-          <li>clothes</li>
-          <li>electronic</li>
-          <li>games</li>
+          <li>
+            <input type="radio" id="clothes" name="category" values="clothes" />
+            <label htmlFor="clothes">clothes</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="electronic"
+              name="category"
+              values="electronic"
+            />
+            <label htmlFor="electronic">electronic</label>
+          </li>
+          <li>
+            <input type="radio" id="games" name="category" values="games" />
+            <label htmlFor="games">games</label>
+          </li>
+          <li>
+            <input type="radio" id="shirts" name="category" values="shirts" />
+            <label htmlFor="shirts">shirts</label>
+          </li>
         </ul>
       </fieldset>
     </div>
