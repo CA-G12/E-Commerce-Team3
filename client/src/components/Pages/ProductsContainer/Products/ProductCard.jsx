@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function ProductCard(props) {
   const { title, image, price } = props.productCard;
-  console.log('product card', title, image, price);
+  // console.log('product card', title, image, price);
   return (
     <div className="product-card">
       <div className="product-image">

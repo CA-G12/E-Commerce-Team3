@@ -3,31 +3,41 @@ import ProductList from './Products/ProductList';
 import Pagination from './Products/Pagination';
 import { useState } from 'react';
 import { useEffect } from 'react';
-// import axios from 'axios';
+import { useOutletContext } from 'react-router-dom';
 
 function ProductsContainer() {
-  const [title, setTitle] = useState('');
-  const [category, setcategory] = useState('');
-  const [priceMin, setpriceMin] = useState(0);
-  const [priceMax, setppriceMax] = useState(1000);
+  const [title] = useOutletContext();
+  const [category, setCategory] = useState('');
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(100);
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    fetch('/product/search/', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `/product/search/?title=${title}&category=${category}&maxPrice=${priceMax}&minPrice=${priceMin}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((data) => data.json())
       .then((data) => {
         console.log(data);
         setProductList(data);
       });
-  }, []);
+  }, [title, category, priceMax, priceMin]);
 
   return (
     <div className="products-container">
-      <Filters />
+      <Filters
+        category={category}
+        setCategory={setCategory}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+      />
       <ProductList productList={productList} />
       <Pagination />
     </div>
