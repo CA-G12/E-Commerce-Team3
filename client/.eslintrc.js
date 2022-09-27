@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'plugin:prettier/recommended',
-    'airbnb',
     'prettier',
     'plugin:react/jsx-runtime',
   ],
