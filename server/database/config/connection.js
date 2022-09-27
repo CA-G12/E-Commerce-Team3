@@ -16,7 +16,6 @@ switch (NODE_ENV) {
     DBUrl = DEV_DB_URL;
     break;
 
-
   default:
     throw new Error('undifind database url');
 }

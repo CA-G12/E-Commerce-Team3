@@ -2,11 +2,11 @@ const CustomizeError = require('../../utils/customError');
 const { hashPassword } = require('../../utils/customBcrypt');
 const { createUser, getUserByEmail } = require('../../database/queries/users');
 const { jwtSign } = require('../../utils/customJwt');
-const signUpschema = require('../../validation/users/signupSchema');
+const signUpSchema = require('../../validation/users/signupSchema');
 
 const signup = (req, res, next) => {
-  const { username, email, password, confirmPassword, avatar } = req.body;
-  signUpschema
+  const { username, email, password, avatar } = req.body;
+  signUpSchema
     .validateAsync(req.body)
 
     .then(() => getUserByEmail(email))

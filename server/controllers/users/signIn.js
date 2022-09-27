@@ -1,9 +1,9 @@
-const bcrybt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 const { getUserByEmail } = require('../../database/queries/users');
 const { signInSchema } = require('../../validation');
-const CustumError = require('../../utils/customError');
+const CustomizeError = require('../../utils/customError');
 
 module.exports = (req, res, next) => {
   const { email, password } = req.body;
@@ -18,12 +18,12 @@ module.exports = (req, res, next) => {
       password,
     })
     .catch((err) => {
-      throw new CustumError(400, err);
+      throw new CustomizeError(400, err);
     })
     .then(() => getUserByEmail(email))
     .then((data) => {
       if (data.rows.length === 0) {
-        throw new CustumError(400, 'Invalid Email or Password !');
+        throw new CustomizeError(400, 'Invalid Email or Password !');
       } else {
         return data.rows[0];
       }
@@ -33,7 +33,7 @@ module.exports = (req, res, next) => {
       userId = user.id;
       userName = user.username;
       userAvatar = user.avatar;
-      return bcrybt.compare(password, user.password);
+      return bcrypt.compare(password, user.password);
     })
     .then((result) => {
       if (result) {
@@ -42,11 +42,11 @@ module.exports = (req, res, next) => {
           username: userName,
           email: userEmail,
         };
-        return jwt.sign(payload, process.env.SECERT_KEY, {
+        return jwt.sign(payload, process.env.SECRET, {
           algorithm: 'HS256',
         });
       }
-      throw new CustumError(400, 'Invalid Email or Password !');
+      throw new CustomizeError(400, 'Invalid Email or Password !');
     })
     .then((token) => {
       res
@@ -56,7 +56,7 @@ module.exports = (req, res, next) => {
           message: 'success',
           status: 200,
           username: {
-            nemail: userEmail,
+            email: userEmail,
             id: userId,
             name: userName,
             avatar: userAvatar,
