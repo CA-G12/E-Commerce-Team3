@@ -1,9 +1,9 @@
 const signup = require('./signup');
-const logout = require('./logout');
-const siginIn = require('./siginIn');
+const signOut = require('./signOut');
+const signIn = require('./signIn');
 
 module.exports = {
   signup,
-  logout,
-  siginIn
+  signOut,
+  signIn,
 };

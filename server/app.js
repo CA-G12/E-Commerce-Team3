@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const { handleClientError, handleServerError } = require('./middlewares/error');
 
 require('dotenv').config();
-const router = require('./routes');
+const { productRouter, userRouter } = require('./routes');
 
 // Middlewares
 const app = express();
@@ -16,7 +16,8 @@ app.use(express.json());
 app.use(compression());
 
 // Routers
-app.use(router);
+app.use(productRouter);
+app.use(userRouter);
 
 // handling errors
 app.use(handleClientError, handleServerError);
