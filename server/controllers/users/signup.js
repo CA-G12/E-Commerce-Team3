@@ -8,6 +8,7 @@ const signup = (req, res, next) => {
   const { username, email, password, confirmPassword, avatar } = req.body;
   signUpschema
     .validateAsync(req.body)
+
     .then(() => getUserByEmail(email))
 
     .then((data) => {
@@ -16,11 +17,7 @@ const signup = (req, res, next) => {
       }
       return hashPassword(password);
     })
-    .then(() => hashPassword(password))
-    .then((data) => {
-      const { id, usernName, Email } = data.rows[0];
-      return { id, usernName, Email };
-    })
+
     .then((hashed) => createUser(username, email, avatar, hashed))
     .then((payload) => jwtSign(payload))
     .then((token) => {
