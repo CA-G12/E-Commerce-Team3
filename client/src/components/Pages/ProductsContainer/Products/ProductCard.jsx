@@ -1,23 +1,22 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function ProductCard() {
+function ProductCard(props) {
+  const { title, image, price } = props.productCard;
+  console.log('product card', title, image, price);
   return (
     <div className="product-card">
       <div className="product-image">
-        <img
-          src="https://images.unsplash.com/photo-1664058986963-5f531744c710?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=846&q=80"
-          alt=""
-        />
+        <img src={image} alt={title} />
       </div>
       <div className="product-details">
-        <p className="product-title">title</p>
-        <p className="product-price">$30.00</p>
+        <p className="product-title">{title}</p>
+        <p className="product-price">${price}</p>
       </div>
       <button type="submit">
-        {/* <Link to="/">
+        <Link to="/">
           <i className="fa-solid fa-cart-shopping" />
           Add To Cart
-        </Link> */}
+        </Link>
       </button>
     </div>
   );
