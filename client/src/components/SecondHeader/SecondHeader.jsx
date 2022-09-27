@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import './SecondHeader.css';
+import { useState } from 'react';
 
-function SecondHeader() {
+function SecondHeader(props) {
+  const { title, setTitle } = props;
+  const [inputSearch, setInput] = useState('');
   return (
     <div className="search-user">
       <div className="container">
@@ -10,15 +13,19 @@ function SecondHeader() {
           <span>Shop by Category</span>
         </div>
         <div className="search-bar">
-          <form>
-            <input
-              type="search"
-              id="search"
-              name="search"
-              placeholder="Search Products"
-            />
-            <i className="fa-solid fa-magnifying-glass" />
-          </form>
+          <input
+            type="search"
+            id="search"
+            name="search"
+            placeholder="Search Products"
+            value={inputSearch}
+            onChange={(e) => {
+              // if (e.key == 'Enter')
+              setInput(e.target.value);
+            }}
+          />
+          <button onClick={() => setTitle(inputSearch)}>search</button>
+          <i className="fa-solid fa-magnifying-glass" />
         </div>
         <div className="right">
           <Link to="/" className="user-box">
