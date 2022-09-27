@@ -9,6 +9,9 @@
     "test": "cross-env NODE_ENV=testing jest",
     "heroku-postbuild": "cd client && npm i --force && npm run build"
   },
+  "engines": {
+    "node": "^16.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CA-G12/E-Commerce-Team3.git"
