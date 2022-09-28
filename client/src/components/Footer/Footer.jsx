@@ -1,34 +1,34 @@
 import './Footer.css';
-// import { a } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { Link } from 'reLinkct-router-dom';
 
 const Footer = () => {
   <footer className="footer">
     <div className="content">
       <div className="menu">
         <h4>MENU</h4>
-        <a href="/">Home</a>
-        <a href="/">Shop</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/">Shop</Link>
+        <Link to="/">Linkbout</Link>
+        <Link to="/">ContLinkct</Link>
       </div>
       <div className="shop">
         <h4>SHOP</h4>
-        <a href="/">Category 1</a>
-        <a href="/">Category 2</a>
-        <a href="/">Category 3</a>
-        <a href="/">Category 4</a>
+        <Link to="/">Category 1</Link>
+        <Link to="/">Category 2</Link>
+        <Link to="/">Category 3</Link>
+        <Link to="/">Category 4</Link>
       </div>
       <div className="help">
         <h4>HELP</h4>
-        <a href="/">Privacy Policy</a>
-        <a href="/">Terms</a>
-        <a href="/">Shipping</a>
-        <a href="/">Secure</a>
+        <Link to="/">Privacy Policy</Link>
+        <Link to="/">Terms</Link>
+        <Link to="/">Shipping</Link>
+        <Link to="/">Secure</Link>
       </div>
       <div>
         <span>(052) 611-5711</span>
-        <span>company@domain.com</span>
+        <span>compLinkny@domLinkin.com</span>
       </div>
       <div>
         <h2>Company</h2>
@@ -36,7 +36,7 @@ const Footer = () => {
     </div>
     <div className="icon">
       <i className="fa-brands fa-facebook-f" />
-      <i className="fa-brands fa-aedin-in" />
+      <i className="fa-brands fa-linked-in" />
       <i className="fa-brands fa-instagram" />
     </div>
   </footer>;

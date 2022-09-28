@@ -1,7 +1,21 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './ProductDetails.css';
 
-function ProductDetails(props) {
-  const { title, image, price, description, category_name } = props;
+function ProductDetails() {
+  const { id } = useParams();
+  const [productDetails, setProductDetails] = useState([]);
+  useEffect(() => {
+    fetch(`/product/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((data) => data.json())
+      .then((data) => setProductDetails(data[0]));
+  }, []);
+  console.log(productDetails);
+  const { title, image, price, description, category_name } = productDetails;
   return (
     <div className="product-details">
       <div className="container">
@@ -24,12 +38,7 @@ function ProductDetails(props) {
           </div>
           <div className="description">
             <h3>Description</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-              corporis iusto ipsa mollitia, et quia error architecto quisquam.
-              Praesentium, qui hic. Possimus architecto quia nobis voluptas
-              praesentium rerum tempora blanditiis.
-            </p>
+            <p>{description}</p>
           </div>
         </div>
       </div>

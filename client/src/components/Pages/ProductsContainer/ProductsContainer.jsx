@@ -12,6 +12,7 @@ function ProductsContainer() {
   const [priceMax, setPriceMax] = useState(100);
   const [productList, setProductList] = useState([]);
 
+  const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
     fetch(
       `/product/search/?title=${title}&category=${category}&maxPrice=${priceMax}&minPrice=${priceMin}`,
@@ -39,7 +40,7 @@ function ProductsContainer() {
         setPriceMax={setPriceMax}
       />
       <ProductList productList={productList} />
-      <Pagination />
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
     </div>
   );
 }

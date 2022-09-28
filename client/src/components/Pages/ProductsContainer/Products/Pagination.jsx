@@ -1,16 +1,36 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+function Pagination(props) {
+  const { pageNumber, setPageNumber } = props;
 
-function Pagination() {
+  const handlePageLink = (e) => {
+    setPageNumber(e.target.dataset.number);
+  };
+
   return (
     <div className="pagination">
-      <FontAwesomeIcon icon="fa-regular fa-arrow-left" />
+      <i className="fa-regular fa-arrow-left"></i>
       <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
+        <li>
+          <a href="" data-number="1" onClick={handlePageLink}>
+            1
+          </a>
+        </li>
+        <li>
+          <a href="" data-number="2" onClick={handlePageLink}>
+            2
+          </a>
+        </li>
+        <li>
+          <a href="" data-number="3" onClick={handlePageLink}>
+            3
+          </a>
+        </li>
+        <li>
+          <a href="" data-number="4" onClick={handlePageLink}>
+            4
+          </a>
+        </li>
       </ul>
-      <FontAwesomeIcon icon="fa-regular fa-arrow-right" />
+      <i className="fa-regular fa-arrow-right"></i>
     </div>
   );
 }
