@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetails.css';
+import fetchUrl from '../../../utils/fetch';
 
 function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     fetch(`/product/${id}`, {
       headers: {
@@ -14,7 +17,25 @@ function ProductDetails() {
       .then((data) => data.json())
       .then((data) => setProductDetails(data[0]));
   }, []);
-  console.log(productDetails);
+
+  const navigate = useNavigate();
+
+  const addToCart = (e) => {
+    fetchUrl('POST', '/cart', {
+      productId: id,
+      userId: 1,
+      count: quantity,
+    })
+      .then((data) => {
+        if (data) {
+          console.log(data);
+          navigate(`/cart`);
+        }
+      })
+      .catch(console.log);
+  };
+
+  console.log(quantity);
   const { title, image, price, description, category_name } = productDetails;
   return (
     <div className="product-details">
@@ -28,13 +49,25 @@ function ProductDetails() {
           <div className="quantity">
             <span className="label">Quantity:</span>
             <div className="quantity-control">
-              <button className="decrease">-</button>
-              <span className="quantity-number">1</span>
-              <button className="increase">+</button>
+              <button
+                className="decrease"
+                onClick={(e) => setQuantity(quantity - 1)}
+              >
+                -
+              </button>
+              <span className="quantity-number">{quantity}</span>
+              <button
+                className="increase"
+                onClick={(e) => setQuantity(quantity + 1)}
+              >
+                +
+              </button>
             </div>
           </div>
           <div className="add-to-cart">
-            <button className="buy-btn">Add to Cart</button>
+            <button className="buy-btn" onClick={addToCart}>
+              Add to Cart
+            </button>
           </div>
           <div className="description">
             <h3>Description</h3>
