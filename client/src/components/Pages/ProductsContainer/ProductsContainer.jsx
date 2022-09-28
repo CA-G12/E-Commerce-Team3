@@ -11,8 +11,17 @@ function ProductsContainer() {
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(100);
   const [productList, setProductList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
 
-  const [pageNumber, setPageNumber] = useState(1);
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = productList.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   useEffect(() => {
     fetch(
       `/product/search/?title=${title}&category=${category}&maxPrice=${priceMax}&minPrice=${priceMin}`,
@@ -39,8 +48,12 @@ function ProductsContainer() {
         priceMax={priceMax}
         setPriceMax={setPriceMax}
       />
-      <ProductList productList={productList} />
-      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+      <ProductList productList={currentPosts} />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={productList.length}
+        paginate={paginate}
+      />
     </div>
   );
 }

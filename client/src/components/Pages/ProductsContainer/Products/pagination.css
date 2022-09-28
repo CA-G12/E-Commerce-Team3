@@ -1,0 +1,12 @@
+.list{
+    display: flex;
+    width: 15%;
+    justify-content: space-around;
+    margin-top: 2rem;
+    margin-left: 4rem;
+}
+.list li{
+    background-color: gainsboro;
+    padding: 15px;
+    cursor: pointer;
+}
