@@ -1,38 +1,26 @@
-function Pagination(props) {
-  const { pageNumber, setPageNumber } = props;
+import React from 'react';
+import './pagination.css';
 
-  const handlePageLink = (e) => {
-    setPageNumber(e.target.dataset.number);
-  };
+const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <div className="pagination">
-      <i className="fa-regular fa-arrow-left"></i>
-      <ul>
-        <li>
-          <a href="" data-number="1" onClick={handlePageLink}>
-            1
-          </a>
-        </li>
-        <li>
-          <a href="" data-number="2" onClick={handlePageLink}>
-            2
-          </a>
-        </li>
-        <li>
-          <a href="" data-number="3" onClick={handlePageLink}>
-            3
-          </a>
-        </li>
-        <li>
-          <a href="" data-number="4" onClick={handlePageLink}>
-            4
-          </a>
-        </li>
+    <nav>
+      <ul className="list">
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item">
+            <a onClick={() => paginate(number)} className="page-link">
+              {number}
+            </a>
+          </li>
+        ))}
       </ul>
-      <i className="fa-regular fa-arrow-right"></i>
-    </div>
+    </nav>
   );
-}
+};
 
 export default Pagination;
