@@ -1,72 +1,44 @@
 import './Cart.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import fetchUrl from '../../../utils/fetch';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Cart() {
   const [productCarts, setCart] = useState([]);
   const [count, setCount] = useState(0);
 
-  const increase = (e, quantity) => {
+  const changeValue = (e, quantity) => {
     const id = e.target.id;
-    const productQuantity = +quantity + 1;
-    setCount(productQuantity);
-    // const product = productCarts.filter((item) => item.id === id);
-    fetch('/cart', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: id,
-        userId: 1,
-        count: productQuantity,
-      }),
-      method: 'PUT',
-    })
-      .then((data) => data.json())
-      .then((data) => {
-        console.log('product', data);
-      });
-  };
-
-  const decrease = (e, quantity) => {
-    const id = e.target.id;
-    const productQuantity = +quantity - 1;
-    setCount(productQuantity);
-    // const product = productCarts.filter((item) => item.id === id);
-    fetch('/cart', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: id,
-        userId: 1,
-        count: productQuantity,
-      }),
-      method: 'PUT',
-    })
-      .then((data) => data.json())
-      .then((data) => {
-        console.log('product', data);
-      });
+    setCount(quantity);
+    fetchUrl('PUT', '/cart', {
+      productId: id,
+      userId: 1,
+      count: quantity,
+    }).then((data) => {
+      console.log('product', data);
+    });
   };
 
   const deleteProduct = (e) => {
     const id = e.target.id;
     setCount('delete');
-    // const product = productCarts.filter((item) => item.id === id);
-    fetch('/cart', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: id,
-        userId: 1,
-      }),
-      method: 'DELETE',
-    })
-      .then((data) => data.json())
-      .then((data) => {
-        console.log('product', data);
+    fetchUrl('DELETE', '/cart', {
+      productId: id,
+      userId: 1,
+    }).then((data) => {
+      console.log('product', data, 444);
+      toast.error('Product Deleted!', {
+        position: 'top-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    });
   };
 
   useEffect(() => {
@@ -96,7 +68,9 @@ function Cart() {
               <i
                 className="fa-solid fa-xmark"
                 id={ele.id}
-                onClick={deleteProduct}
+                onClick={(e) => {
+                  deleteProduct(e);
+                }}
               ></i>
               <Link to={`/products/${ele.id}`}>
                 <img src={ele.image} alt={ele.title} />
@@ -108,13 +82,13 @@ function Cart() {
               <i
                 className="fa-solid fa-minus"
                 id={ele.id}
-                onClick={(e) => decrease(e, ele.count)}
+                onClick={(e) => changeValue(e, +ele.count - 1)}
               ></i>
               <span>{ele.count}</span>
               <i
                 className="fa-solid fa-plus"
                 id={ele.id}
-                onClick={(e) => increase(e, ele.count)}
+                onClick={(e) => changeValue(e, +ele.count + 1)}
               ></i>
             </div>
             <div>${ele.count * ele.price}</div>
@@ -133,7 +107,10 @@ function Cart() {
           </p>
         </div>
         <button>Proceed to Checkout</button>
+
+        {/* Same as */}
       </section>
+      <ToastContainer />
     </>
   );
 }
