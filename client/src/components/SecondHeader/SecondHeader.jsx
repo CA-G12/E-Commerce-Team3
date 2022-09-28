@@ -38,6 +38,18 @@ function SecondHeader(props) {
           <Link to="/" className="user-info">
             <i className="fa-solid fa-user" />
             <i className="fa-solid fa-sort-down" />
+            <ul>
+              <li>
+                <Link to="/login" className="login">
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/signup" className="signup">
+                  Signup
+                </Link>
+              </li>
+            </ul>
           </Link>
           <Link to="/" className="user-info" style={{ display: 'none' }}>
             <img src="/green-t-shirt.jpg" alt="product" />
@@ -46,6 +58,13 @@ function SecondHeader(props) {
           <Link to="/cart" className="cart-link">
             <i className="fa-solid fa-cart-shopping" />
             <span>1</span>
+            <ul>
+              <li>
+                <Link to="/" className="logout">
+                  Logout
+                </Link>
+              </li>
+            </ul>
           </Link>
         </div>
       </div>

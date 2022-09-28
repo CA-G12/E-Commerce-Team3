@@ -4,6 +4,7 @@ import Pagination from './Products/Pagination';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function ProductsContainer() {
   const [title] = useOutletContext();
@@ -54,6 +55,7 @@ function ProductsContainer() {
         totalPosts={productList.length}
         paginate={paginate}
       />
+      <ToastContainer />
     </div>
   );
 }
