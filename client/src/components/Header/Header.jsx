@@ -1,11 +1,14 @@
-// import { a } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import './Header.css';
 
 function Header() {
   return (
     <header>
       <div className="container">
-        <div className="logo">OREBI</div>
+        <div className="logo">
+          <Link to="/">OREBI</Link>
+        </div>
         <nav className="navbar">
           <ul>
             <li>
