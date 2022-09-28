@@ -25,7 +25,12 @@ function SecondHeader(props) {
               if (e.key == 'Enter') setTitle(e.target.value);
             }}
           />
-          <button onClick={() => setTitle(inputSearch)}>
+          <button
+            onClick={(e) => {
+              setTitle(inputSearch);
+              e.target.parentElement.parentElement.firstChild.value = '';
+            }}
+          >
             <i className="fa-solid fa-magnifying-glass" />
           </button>
         </div>
@@ -34,11 +39,11 @@ function SecondHeader(props) {
             <i class="fa-solid fa-user" />
             <i class="fa-solid fa-sort-down" />
           </Link>
-          <Link to="/" className="user-info" /* style={{ display: 'none' }}*/>
+          <Link to="/" className="user-info" style={{ display: 'none' }}>
             <img src="/green-t-shirt.jpg" alt="product" />
             <span className="username">Username</span>
           </Link>
-          <Link to="/" className="cart-link">
+          <Link to="/cart" className="cart-link">
             <i class="fa-solid fa-cart-shopping" />
             <span>1</span>
           </Link>
