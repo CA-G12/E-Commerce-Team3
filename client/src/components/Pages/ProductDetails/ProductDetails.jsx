@@ -20,11 +20,11 @@ function ProductDetails() {
     <div className="product-details">
       <div className="container">
         <div className="product-image">
-          <img src="../green-t-shirt.jpg" alt="product" />
+          <img src={image} alt="product" />
         </div>
         <div className="product-info">
-          <h2 className="title">Product</h2>
-          <p className="price">$44.00</p>
+          <h2 className="title">{title}</h2>
+          <p className="price">${price}</p>
           <div className="quantity">
             <span className="label">Quantity:</span>
             <div className="quantity-control">

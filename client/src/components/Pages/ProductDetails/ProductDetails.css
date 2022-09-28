@@ -49,6 +49,7 @@
 
 .product-details .product-info .quantity .quantity-control {
   border: 1px solid #ccc;
+  display: flex;
 }
 
 .product-details .product-info .quantity .quantity-control .quantity-number {

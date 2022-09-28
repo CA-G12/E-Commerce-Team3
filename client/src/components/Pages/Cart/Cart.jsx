@@ -23,7 +23,7 @@ function Cart() {
 
   const deleteProduct = (e) => {
     const id = e.target.id;
-    setCount('delete');
+    setCount(+id + 1);
     fetchUrl('DELETE', '/cart', {
       productId: id,
       userId: 1,
