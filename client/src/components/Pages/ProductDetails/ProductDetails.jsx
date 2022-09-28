@@ -17,26 +17,26 @@ function ProductDetails() {
   console.log(productDetails);
   const { title, image, price, description, category_name } = productDetails;
   return (
-    <div class="product-details">
-      <div class="container">
-        <div class="product-image">
-          <img src={image} alt="product" />
+    <div className="product-details">
+      <div className="container">
+        <div className="product-image">
+          <img src="../green-t-shirt.jpg" alt="product" />
         </div>
-        <div class="product-info">
-          <h2 class="title">{title}</h2>
-          <p class="price">${price}</p>
-          <div class="quantity">
-            <span class="label">Quantity:</span>
-            <div class="quantity-control">
-              <button class="decrease">-</button>
-              <span class="quantity-number">1</span>
-              <button class="increase">+</button>
+        <div className="product-info">
+          <h2 className="title">Product</h2>
+          <p className="price">$44.00</p>
+          <div className="quantity">
+            <span className="label">Quantity:</span>
+            <div className="quantity-control">
+              <button className="decrease">-</button>
+              <span className="quantity-number">1</span>
+              <button className="increase">+</button>
             </div>
           </div>
-          <div class="add-to-cart">
-            <button class="buy-btn">Add to Cart</button>
+          <div className="add-to-cart">
+            <button className="buy-btn">Add to Cart</button>
           </div>
-          <div class="description">
+          <div className="description">
             <h3>Description</h3>
             <p>{description}</p>
           </div>

@@ -7,6 +7,7 @@ import SecondHeader from './components/SecondHeader/SecondHeader';
 // import ProductsContainer from './components/Pages/ProductsContainer/ProductsContainer';
 // import router from './routes/router';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 function Root() {
   const [title, setTitle] = useState('');
