@@ -1,0 +1,40 @@
+.filters {
+    margin-left: 3.5rem;
+    width: 20%;
+  }
+  
+  fieldset {
+    margin-top: 0.5rem;
+    /* border: 1px solid gainsboro; */
+    border: none;
+  }
+  
+  legend {
+    font-weight: bold;
+  }
+  label + label {
+    margin-top: 0.25rem;
+  }
+  
+  input {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .price-filter div{
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-bottom: 5px;
+  }
+
+  .category-filter ul{
+    margin-top: 10px;
+  }
+
+  .category-filter ul li{
+    margin-bottom: 10px;
+  }
+
+  .category-filter{
+    margin-top: 2.5rem;
+  }

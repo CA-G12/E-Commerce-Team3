@@ -55,7 +55,7 @@ function Cart() {
   }, [count]);
   return (
     <>
-      <section className="products">
+      <section className="products-sec">
         <div className="header">
           <div>Product</div>
           <div>Price</div>
