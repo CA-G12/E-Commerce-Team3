@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import './ProductContainer.css';
 
 function ProductsContainer() {
   const [title] = useOutletContext();
@@ -13,7 +14,7 @@ function ProductsContainer() {
   const [priceMax, setPriceMax] = useState(100);
   const [productList, setProductList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(10);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -41,15 +42,17 @@ function ProductsContainer() {
 
   return (
     <div className="products-container">
-      <Filters
-        category={category}
-        setCategory={setCategory}
-        priceMin={priceMin}
-        setPriceMin={setPriceMin}
-        priceMax={priceMax}
-        setPriceMax={setPriceMax}
-      />
-      <ProductList productList={currentPosts} />
+      <div className="filter-product">
+        <Filters
+          category={category}
+          setCategory={setCategory}
+          priceMin={priceMin}
+          setPriceMin={setPriceMin}
+          priceMax={priceMax}
+          setPriceMax={setPriceMax}
+        />
+        <ProductList productList={currentPosts} />
+      </div>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={productList.length}
