@@ -2,13 +2,15 @@ const express = require('express');
 const { join } = require('path');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { handleClientError, handleServerError } = require('./middlewares/error');
-
 require('dotenv').config();
 const { productRouter, userRouter } = require('./routes');
 
 // Middlewares
 const app = express();
+
+app.use(cors());
 app.set('port', process.env.PORT || 8080);
 app.disable('x-powered-by');
 app.use(cookieParser());
