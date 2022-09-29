@@ -19,15 +19,12 @@ const router = createBrowserRouter([
       { path: '*', element: <Error /> },
       { index: '/', element: <ProductsContainer /> },
       { path: '/products', element: <ProductsContainer /> },
-<<<<<<< HEAD
       {
         path: '/signup',
         element: <Signup />,
       },
-=======
       { path: '/products/:id', element: <ProductDetails /> },
       { path: '/cart', element: <Cart /> },
->>>>>>> main
     ],
   },
 ]);
