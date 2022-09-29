@@ -15,7 +15,6 @@ const signup = (req, res, next) => {
 
     .then(() => getUserByEmail(email))
     .then((data) => {
-      console.log(data);
       if (data === undefined) {
         throw new CustomizeError(404, 'not Found');
       }
@@ -45,7 +44,6 @@ const signup = (req, res, next) => {
       }
     })
     .catch((err) => {
-      console.log(err);
       next(err);
     });
 };

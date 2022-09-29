@@ -9,7 +9,6 @@ import ProductDetails from '../components/Pages/ProductDetails/ProductDetails.js
 import Cart from '../components/Pages/Cart/Cart.jsx';
 import Error from '../components/Pages/Error/Error';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,13 +19,9 @@ const router = createBrowserRouter([
       { index: '/', element: <ProductsContainer /> },
       { path: '/users/signin', element: <SignIn /> },
       { path: '/products', element: <ProductsContainer /> },
-      {
-        path: '/signup',
-        element: <Signup />,
-      },
+      { path: '/users/signup', element: <Signup /> },
       { path: '/products/:id', element: <ProductDetails /> },
       { path: '/cart', element: <Cart /> },
-
     ],
   },
 ]);
