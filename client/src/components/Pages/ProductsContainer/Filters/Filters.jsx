@@ -1,5 +1,6 @@
 function Filter(props) {
   const {
+    categories,
     category,
     setCategory,
     priceMin,
@@ -49,47 +50,28 @@ function Filter(props) {
           <li>
             <input
               type="radio"
-              id="clothes"
+              id="all"
               name="category"
-              value="clothes"
-              checked={category == 'clothes'}
-              onChange={(e) => setCategory(e.target.value)}
+              value="all"
+              checked={category == ''}
+              onChange={(e) => setCategory('')}
             />
-            <label htmlFor="clothes">clothes</label>
+            <label htmlFor="clothes">All</label>
           </li>
-          <li>
-            <input
-              type="radio"
-              id="electronic"
-              name="category"
-              value="electronic"
-              checked={category == 'electronic'}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="electronic">electronic</label>
-          </li>
-          <li>
-            <input
-              type="radio"
-              id="games"
-              name="category"
-              value="games"
-              checked={category == 'games'}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="games">games</label>
-          </li>
-          <li>
-            <input
-              type="radio"
-              id="shirts"
-              name="category"
-              value="shirts"
-              checked={category == 'shirts'}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="shirts">shirts</label>
-          </li>
+          {categories &&
+            categories.map((item) => (
+              <li>
+                <input
+                  type="radio"
+                  id={item.id}
+                  name="category"
+                  value={item.name}
+                  checked={category == item.name}
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label htmlFor={item.id}>{item.name}</label>
+              </li>
+            ))}
         </ul>
       </fieldset>
     </div>
