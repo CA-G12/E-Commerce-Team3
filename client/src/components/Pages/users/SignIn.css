@@ -70,14 +70,14 @@
   border-radius: 32px;
 }
 
-.login {
+.sign-in-container .login {
   width: 320px;
   padding: 30px;
   padding-top: 175px;
   padding-left: 7px;
 }
 
-.loginfield {
+.sign-in-container .loginfield {
   padding: 20px 0px;
   position: relative;
 }

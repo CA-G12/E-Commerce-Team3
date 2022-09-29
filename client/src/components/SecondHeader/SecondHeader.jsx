@@ -58,13 +58,13 @@ function SecondHeader(props) {
           <Link to="/cart" className="cart-link">
             <i className="fa-solid fa-cart-shopping" />
             <span>1</span>
-            <ul>
+            {/* <ul>
               <li>
                 <Link to="/" className="logout">
                   Logout
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </Link>
         </div>
       </div>

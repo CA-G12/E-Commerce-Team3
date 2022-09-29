@@ -3,7 +3,7 @@
 * {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 	font-family: Raleway, sans-serif;
 }
 
@@ -15,21 +15,21 @@
 	min-height: 100vh;
 }
 
-.screen {		
-	background:white;		
-	position: relative;	
+.screen {
+	background: white;
+	position: relative;
 	height: 600px;
-	width: 360px;	
-	box-shadow: 0px 0px 24px ;
+	width: 360px;
+	box-shadow: 0px 0px 24px;
 }
 
 .screen__content {
 	z-index: 1;
-	position: relative;	
+	position: relative;
 	height: 100%;
 }
 
-.screen__background {		
+.screen__background {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -37,7 +37,7 @@
 	bottom: 0;
 	z-index: 0;
 	-webkit-clip-path: inset(0 0 0 0);
-	clip-path: inset(0 0 0 0);	
+	clip-path: inset(0 0 0 0);
 }
 
 .screen__background__shape {
@@ -48,42 +48,42 @@
 .screen__background__shape1 {
 	height: 520px;
 	width: 520px;
-	background:#eee;	
+	background: #eee;
 	top: -50px;
-	right: 120px;	
+	right: 120px;
 	border-radius: 0 72px 0 0;
 }
 
 .screen__background__shape2 {
 	height: 220px;
 	width: 220px;
-	background:black;	
+	background: black;
 	top: -172px;
-	right: 0;	
+	right: 0;
 	border-radius: 32px;
 }
 
 .screen__background__shape3 {
 	height: 540px;
 	width: 190px;
-	background:black;
+	background: black;
 	top: -24px;
-	right: 0;	
+	right: 0;
 	border-radius: 32px;
 }
 
 
 
-.signup {
+.container-signup .signup {
 	width: 300px;
 	padding: 30px;
 	padding-top: 70px;
-    padding-left: px;
+	padding-left: px;
 }
 
 .signup__field {
-	padding: 20px 0px;	
-	position: relative;	
+	padding: 20px 0px;
+	position: relative;
 }
 
 
@@ -103,7 +103,7 @@
 .signup__input:focus,
 .signup__input:hover {
 	outline: none;
-	border-bottom-color:black;
+	border-bottom-color: black;
 }
 
 .signup__submit {
@@ -116,23 +116,24 @@
 	text-transform: uppercase;
 	font-weight: 700;
 	display: flex;
-    justify-content: center;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	color: black;
 	box-shadow: 0px 2px 2px black;
 	cursor: pointer;
 	transition: .2s;
-   
+
 }
 
 .signup__submit:active,
 .signup__submit:focus,
 .signup__submit:hover {
-	border-color:black;
+	border-color: black;
 	outline: none;
 }
+
 .handle-error {
-    margin: 0px;
-    color: red;
-  }
+	margin: 0px;
+	color: red;
+}
