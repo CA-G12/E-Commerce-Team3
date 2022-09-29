@@ -1,19 +1,20 @@
-*{
-box-sizing: border-box;
-padding: 0px;
-margin: 0px;
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
 }
-.filter-product{
+
+.filter-product {
     display: flex;
     margin-top: 3rem;
 }
 
-.product-image img{
+.product-image img {
     width: 250px;
     height: 275px;
 }
 
-.products{
+.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -26,16 +27,19 @@ margin: 0px;
     justify-content: space-between;
     padding: 3px;
 }
-.product-card button{
+
+.product-card button {
     border: none;
     padding: 7px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
-.product-card button a i{
+.product-card button a i {
     margin-right: 5px;
 }
-.product-card{
+
+.product-card {
     /* border: 1px solid gainsboro; */
     margin: 0px 2rem 3rem 2rem;
 }
