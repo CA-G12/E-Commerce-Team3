@@ -9,8 +9,8 @@ const Footer = () => {
           <h4>MENU</h4>
           <Link to="/">Home</Link>
           <Link to="/products">Shop</Link>
-          <Link to="/">Linkbout</Link>
-          <Link to="/">ContLinkct</Link>
+          <Link to="/">About</Link>
+          <Link to="/">Contact</Link>
         </div>
         <div className="shop">
           <h4>SHOP</h4>
