@@ -4,7 +4,7 @@ import Pagination from './Products/Pagination';
 
 function ProductsContainer() {
   return (
-    <div className="products-container">
+    <div>
       <Filters />
       <ProductList />
       <Pagination />

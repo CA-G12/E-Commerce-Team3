@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(compression());
 app.use(express.static(join(__dirname, '..', 'client', 'build')));
+
 // Routers
 app.use(productRouter);
 app.use(userRouter);

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 function Filter() {
   return (
     <div className="felters">

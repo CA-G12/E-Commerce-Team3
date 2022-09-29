@@ -5,6 +5,7 @@ import Root from '../root';
 // import PageTitle from './components/PageTitle/PageTitle';
 // import SecondHeader from './components/SecondHeader/SecondHeader';
 import ProductsContainer from '../components/Pages/ProductsContainer/ProductsContainer';
+import SignIn from '../components/Pages/users/SignIn.component';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { index: '/', element: <ProductsContainer /> },
-      { path: '/products', element: <ProductsContainer /> },
+      { path: '/users/signin', element: <SignIn /> },
     ],
   },
 ]);
