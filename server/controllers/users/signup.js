@@ -8,17 +8,19 @@ const signup = (req, res, next) => {
   const { username, email, password, avatar } = req.body;
   signUpSchema
     .validateAsync(req.body)
-
     .then(() => getUserByEmail(email))
-
     .then((data) => {
       if (data.rows.length > 0) {
         throw new CustomizeError(401, 'this email is in use');
       }
       return hashPassword(password);
     })
-
-    .then((hashed) => createUser(username, email, avatar, hashed))
+    .then((hashed) => createUser(username, email, hashed, avatar))
+    .then((data) => ({
+      id: data.rows.id,
+      email,
+      username,
+    }))
     .then((payload) => jwtSign(payload))
     .then((token) => {
       if (token) {

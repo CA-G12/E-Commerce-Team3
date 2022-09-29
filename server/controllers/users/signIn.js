@@ -31,31 +31,31 @@ module.exports = (req, res, next) => {
     .then((user) => {
       userEmail = user.email;
       userId = user.id;
-      userName = user.username;
+      userName = user.name;
       userAvatar = user.avatar;
       return bcrypt.compare(password, user.password);
     })
     .then((result) => {
-      if (result) {
-        const payload = {
-          id: userId,
-          username: userName,
-          email: userEmail,
-        };
-        return jwt.sign(payload, process.env.SECRET, {
-          algorithm: 'HS256',
-        });
-      }
-      throw new CustomizeError(400, 'Invalid Email or Password !');
+      if (!result) throw new CustomizeError(400, 'Invalid Email or Password !');
+
+      const payload = {
+        id: userId,
+        username: userName,
+        email: userEmail,
+      };
+
+      return jwt.sign(payload, process.env.SECRET, {
+        algorithm: 'HS256',
+      });
     })
     .then((token) => {
       res
         .cookie('token', token, { httpOnly: true })
         .status(200)
         .json({
-          message: 'success',
+          msg: 'success',
           status: 200,
-          username: {
+          user: {
             email: userEmail,
             id: userId,
             name: userName,
