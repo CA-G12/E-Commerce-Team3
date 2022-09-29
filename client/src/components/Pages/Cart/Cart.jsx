@@ -63,7 +63,7 @@ function Cart() {
           <div>Total</div>
         </div>
         {productCarts.map((ele) => (
-          <div className="item">
+          <div className="item" key={ele.id}>
             <div className="product-img">
               <i
                 className="fa-solid fa-xmark"
