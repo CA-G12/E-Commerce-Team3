@@ -13,7 +13,7 @@ function ProductsContainer() {
   const [priceMax, setPriceMax] = useState(100);
   const [productList, setProductList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [postsPerPage] = useState(9);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;

@@ -52,33 +52,33 @@ function Filter(props) {
               type="radio"
               id="clothes"
               name="category"
-              value="clothes"
-              checked={category == 'clothes'}
+              value="shoes"
+              checked={category == 'shoes'}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <label htmlFor="clothes">clothes</label>
+            <label htmlFor="shoes">shoes</label>
           </li>
           <li>
             <input
               type="radio"
-              id="electronic"
+              id="jewelry"
               name="category"
-              value="electronic"
-              checked={category == 'electronic'}
+              value="jewelry"
+              checked={category == 'jewelry'}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <label htmlFor="electronic">electronic</label>
+            <label htmlFor="electronic">jewelry</label>
           </li>
           <li>
             <input
               type="radio"
-              id="games"
+              id="Jeans"
               name="category"
-              value="games"
-              checked={category == 'games'}
+              value="Jeans"
+              checked={category == 'Jeans'}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <label htmlFor="games">games</label>
+            <label htmlFor="games">Jeans</label>
           </li>
           <li>
             <input
