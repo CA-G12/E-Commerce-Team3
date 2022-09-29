@@ -57,7 +57,7 @@ function Filter(props) {
               checked={category == ''}
               onChange={(e) => setCategory('')}
             />
-            <label htmlFor="clothes">All</label>
+            <label htmlFor="all">All</label>
           </li>
           {categories &&
             categories.map((item) => (

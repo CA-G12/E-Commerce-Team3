@@ -8,8 +8,9 @@ function ProductCard(props) {
   const navigate = useNavigate();
 
   const addToCart = (e) => {
-    const id = e.target.parentElement.parentElement.parentElement.id;
-    console.log(e.target.parentElement.parentElement);
+    const id = e.target.id;
+    console.log(e.target.id);
+
     fetchUrl('POST', '/cart', {
       productId: id,
       userId: 1,
@@ -38,15 +39,17 @@ function ProductCard(props) {
         <div className="product-image">
           <img src={image} alt={title} />
         </div>
-        <div className="product-details">
-          <p className="product-title">{title}</p>
-          <p className="product-price">${price}</p>
-        </div>
-        <button type="submit" onClick={addToCart}>
-          <i className="fa-solid fa-cart-shopping" />
-          Add To Cart
-        </button>
       </Link>
+      <div className="product-details">
+        <Link to={`/products/${id}`}>
+          <p className="product-title">{title}</p>
+        </Link>
+        <p className="product-price">${price}</p>
+      </div>
+      <button type="submit" onClick={addToCart} id={id}>
+        <i className="fa-solid fa-cart-shopping" />
+        Add To Cart
+      </button>
       <ToastContainer />
     </div>
   );
