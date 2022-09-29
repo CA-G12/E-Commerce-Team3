@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import * as yup from 'yup';
+
 import { useNavigate } from 'react-router-dom';
 import signSchema from '../../../utils/fetch';
 import { toast } from 'react-toastify';

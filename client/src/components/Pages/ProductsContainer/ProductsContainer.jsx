@@ -38,11 +38,7 @@ function ProductsContainer() {
         )
       )
       .then((data) => {
-        console.log('Said Is Heere', data);
         setProductList(data);
-      })
-      .catch((err) => {
-        console.log('sdjsdhsjd', err);
       });
   }, [title, category, priceMax, priceMin]);
 
