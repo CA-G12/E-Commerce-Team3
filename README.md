@@ -1,7 +1,6 @@
 # Ecommerce-React
 
-## Live Server
-
+## [Live Server](http://ecommerce-team3-g12.herokuapp.com/)
 ---
 
 ## Description:
@@ -13,6 +12,9 @@
 ![Databae Schema](https://i.imgur.com/DFhgiQI.png)
 
 ---
+
+## Fegma Design
+[Figma Link](https://www.figma.com/file/7aQDseOVkbP1gCzBiBrSuj/Ecommerce-Team-3?node-id=0%3A1)
 
 ## User Stories:
 
@@ -30,6 +32,7 @@
 ## How to install the project on the local machine
 
 - You can click the _code_ drop-down menu as illustrated in the picture above and copy the link to clone the repo.
+
 - Now go to your terminal and type: `git clone <the link here>` and then the repo will be cloned to your local machine.
 - By now you have to open your IDE -I recommend VSCode- and open the project.
 - Now you need to run the command `npm install` to install all the dependencies.
