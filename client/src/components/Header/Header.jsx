@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import './Header.css';
 
-function Header() {
+function Header(isLogged, setIsLogged) {
+  console.log(isLogged.isLogged);
+  function handleChange() {
+    setIsLogged(false);
+  }
   return (
     <header>
       <div className="container">
@@ -26,12 +30,23 @@ function Header() {
           </ul>
         </nav>
         <div className="languages">
-          <span>
-            <Link to="/">EN</Link>
-          </span>
-          <span>
-            <Link to="/">AR</Link>
-          </span>
+
+          {!isLogged.isLogged ? (
+            <span>
+              <a href="/" onClick={handleChange}>
+                logOut
+              </a>
+            </span>
+          ) : (
+            <>
+              <span>
+                <a href="/users/signin">Sign In</a>
+              </span>
+              <span>
+                <a href="/signup">Sign Up</a>
+              </span>
+            </>
+          )}
         </div>
       </div>
     </header>

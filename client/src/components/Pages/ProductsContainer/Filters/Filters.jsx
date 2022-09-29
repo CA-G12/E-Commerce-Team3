@@ -1,3 +1,4 @@
+
 import './Filters.css';
 function Filter(props) {
   const {
@@ -10,6 +11,7 @@ function Filter(props) {
     setPriceMax,
   } = props;
   console.log('props', category, priceMin, priceMax);
+
   return (
     <div className="filters">
       <fieldset className="price-filter">

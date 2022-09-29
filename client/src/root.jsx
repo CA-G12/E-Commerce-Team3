@@ -6,31 +6,33 @@ import PageTitle from './components/PageTitle/PageTitle';
 import SecondHeader from './components/SecondHeader/SecondHeader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useEffect, useState } from 'react';
+
 // import ProductsContainer from './components/Pages/ProductsContainer/ProductsContainer';
 // import router from './routes/router';
 import { useState } from 'react';
 
 function Root() {
+
   const [title, setTitle] = useState('');
   const [pageName, setPageName] = useState('');
-
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    localStorage.getItem('logged');
+    setIsLogged(localStorage.getItem('logged'));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('logged', isLogged);
+  }, [isLogged]);
   return (
     <>
-      <ToastContainer
-        position="top-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer />
       <Header />
       <SecondHeader title={title} setTitle={setTitle} />
       <PageTitle pageName={pageName} />
-      <Outlet context={[title, setPageName]} />
+      <Outlet context={[title, setPageName, isLogged, setIsLogged]} />
+
       <Footer />
     </>
   );

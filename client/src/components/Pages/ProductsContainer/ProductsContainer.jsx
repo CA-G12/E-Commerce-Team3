@@ -47,6 +47,7 @@ function ProductsContainer() {
   }, [title, category, priceMax, priceMin]);
   setPageName('Products');
   return (
+
     <div className="products-container">
       <div className="filter-product">
         <Filters

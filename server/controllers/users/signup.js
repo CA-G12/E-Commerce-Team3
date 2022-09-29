@@ -7,10 +7,12 @@ const signUpSchema = require('../../validation/users/signupSchema');
 const signup = (req, res, next) => {
   const { username, email, password, avatar } = req.body;
   signUpSchema
+
     .validateAsync({ username, email, password, avatar })
     .catch((err) => {
       throw new CustomizeError(400, err);
     })
+
     .then(() => getUserByEmail(email))
     .then((data) => {
       console.log(data);
@@ -23,7 +25,7 @@ const signup = (req, res, next) => {
       return hashPassword(password);
     })
 
-    .then((hashed) => createUser(username, email, avatar, hashed))
+    .then((hashed) => createUser(username, email, hashed, avatar))
     .then((data) => ({
       id: data.rows.id,
       email,
