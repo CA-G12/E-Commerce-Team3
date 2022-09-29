@@ -6,11 +6,17 @@ import PageTitle from './components/PageTitle/PageTitle';
 import SecondHeader from './components/SecondHeader/SecondHeader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import { useEffect, useState } from 'react';
+
 // import ProductsContainer from './components/Pages/ProductsContainer/ProductsContainer';
 // import router from './routes/router';
+import { useState } from 'react';
 
 function Root() {
+
+  const [title, setTitle] = useState('');
+  const [pageName, setPageName] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
     localStorage.getItem('logged');
@@ -22,10 +28,11 @@ function Root() {
   return (
     <>
       <ToastContainer />
-      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
-      <SecondHeader />
-      <PageTitle />
-      <Outlet context={[isLogged, setIsLogged]} />
+      <Header />
+      <SecondHeader title={title} setTitle={setTitle} />
+      <PageTitle pageName={pageName} />
+      <Outlet context={[title, setPageName, isLogged, setIsLogged]} />
+
       <Footer />
     </>
   );

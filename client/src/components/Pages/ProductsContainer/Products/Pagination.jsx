@@ -1,18 +1,26 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import './pagination.css';
 
-function Pagination() {
+const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div className="pagination">
-      <FontAwesomeIcon icon="fa-regular fa-arrow-left" />
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
+    <nav>
+      <ul className="list">
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item">
+            <a onClick={() => paginate(number)} className="page-link">
+              {number}
+            </a>
+          </li>
+        ))}
       </ul>
-      <FontAwesomeIcon icon="fa-regular fa-arrow-right" />
-    </div>
+    </nav>
   );
-}
+};
 
 export default Pagination;

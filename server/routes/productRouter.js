@@ -1,5 +1,10 @@
 const productRouter = require('express').Router();
-const { getProduct, filterProduct } = require('../controllers/product');
+const {
+  getProduct,
+  filterProduct,
+  getCategories,
+} = require('../controllers/product');
+
 const {
   getCart,
   addToCart,
@@ -15,5 +20,7 @@ productRouter.get('/cart/:userId', getCart);
 productRouter.post('/cart/', addToCart);
 productRouter.delete('/cart/', deleteFromCart);
 productRouter.put('/cart/', updateCart);
+
+productRouter.get('/categories/', getCategories);
 
 module.exports = productRouter;

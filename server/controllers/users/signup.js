@@ -7,14 +7,24 @@ const signUpSchema = require('../../validation/users/signupSchema');
 const signup = (req, res, next) => {
   const { username, email, password, avatar } = req.body;
   signUpSchema
-    .validateAsync(req.body)
+
+    .validateAsync({ username, email, password, avatar })
+    .catch((err) => {
+      throw new CustomizeError(400, err);
+    })
+
     .then(() => getUserByEmail(email))
     .then((data) => {
+      console.log(data);
+      if (data === undefined) {
+        throw new CustomizeError(404, 'not Found');
+      }
       if (data.rows.length > 0) {
         throw new CustomizeError(401, 'this email is in use');
       }
       return hashPassword(password);
     })
+
     .then((hashed) => createUser(username, email, hashed, avatar))
     .then((data) => ({
       id: data.rows.id,
@@ -34,7 +44,10 @@ const signup = (req, res, next) => {
         throw new CustomizeError(500, 'failed');
       }
     })
-    .catch((err) => next(err));
+    .catch((err) => {
+      console.log(err);
+      next(err);
+    });
 };
 
 module.exports = signup;

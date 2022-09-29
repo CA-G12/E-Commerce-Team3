@@ -3,6 +3,7 @@ const connection = require('../../config/connection');
 const filterProductQuery = ({ title, category, minPrice, maxPrice }) =>
   connection.query(
     `select 
+      p.id,
       p.title,
       p.description,
       p.price,

@@ -1,5 +1,5 @@
-// import { a } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header(isLogged, setIsLogged) {
@@ -10,24 +10,27 @@ function Header(isLogged, setIsLogged) {
   return (
     <header>
       <div className="container">
-        <div className="logo">OREBI</div>
+        <div className="logo">
+          <Link to="/">OREBI</Link>
+        </div>
         <nav className="navbar">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/">Shop</a>
+              <Link to="/products">Shop</Link>
             </li>
             <li>
-              <a href="/">About</a>
+              <Link to="/">About</Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link to="/">Contact</Link>
             </li>
           </ul>
         </nav>
         <div className="languages">
+
           {!isLogged.isLogged ? (
             <span>
               <a href="/" onClick={handleChange}>
