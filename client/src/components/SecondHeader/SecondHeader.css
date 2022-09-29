@@ -67,7 +67,10 @@
   cursor: pointer;
   padding: 10px 16px;
   border-radius: 30px;
+  position: relative;
 }
+
+
 
 .right .user-info:hover {
   box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
@@ -84,7 +87,7 @@
   border-radius: 30px;
 }
 
-.cart-link:hover{
+.cart-link:hover {
   box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -113,4 +116,51 @@
 .right>.user-info:nth-child(2) span {
   font-weight: bold;
   font-size: 14px;
+}
+
+
+
+/* Dropdown list */
+.right>.user-info:hover ul,
+.right>.cart-link:hover ul {
+  display: block;
+}
+
+.right>.user-info ul,
+.right>.cart-link ul {
+  position: absolute;
+  background: #ebebe8;
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  display: none;
+  border-radius: 5px;
+}
+
+.right>.user-info ul:before,
+.right>.cart-link ul:before {
+  content: "";
+  position: absolute;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #e2e2e1 transparent;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.right>.user-info ul a,
+.right>.cart-link ul a {
+  display: block;
+  text-align: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.right>.user-info ul a:hover,
+.right>.cart-link ul a:hover {
+  background-color: #ddd;
 }

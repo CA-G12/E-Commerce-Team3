@@ -12,25 +12,25 @@ function Header() {
         <nav className="navbar">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/">Shop</a>
+              <Link to="/products">Shop</Link>
             </li>
             <li>
-              <a href="/">About</a>
+              <Link to="/">About</Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link to="/">Contact</Link>
             </li>
           </ul>
         </nav>
         <div className="languages">
           <span>
-            <a href="/">EN</a>
+            <Link to="/">EN</Link>
           </span>
           <span>
-            <a href="/">AR</a>
+            <Link to="/">AR</Link>
           </span>
         </div>
       </div>

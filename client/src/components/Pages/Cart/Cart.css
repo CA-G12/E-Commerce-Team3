@@ -1,8 +1,9 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
 }
+
 .products-sec{
     border: 1px solid #F4F6F3;
     width: 80%;
@@ -10,69 +11,90 @@
     margin-top: 3rem;
 }
 
-.header{
+
+.header {
     display: flex;
     justify-content: space-between;
     background-color: #F4F6F3;
     padding: 1.2rem;
 }
-.search-input{
+
+.header>div {
+    flex: 2;
+    text-align: right;
+}
+
+.header>div:first-child {
+    flex: 3;
+    text-align: left;
+}
+
+
+.search-input {
     background-color: #f4f6f3;
     padding: 1.3rem;
     text-align: center;
 }
 
-.search-input input{
+.search-input input {
     width: 30%;
     padding: 10px;
     border: none;
 }
 
-.search-input .fa-magnifying-glass{
+.search-input .fa-magnifying-glass {
     position: relative;
     right: 30px;
 }
 
-.search-input .fa-cart-shopping{
+.search-input .fa-cart-shopping {
     position: relative;
     left: 24rem;
 }
 
-.item{
+.item {
     display: flex;
     padding: 1.2rem;
     justify-content: space-between;
     align-items: center;
 }
 
-.product-img{
+.item .product-img {
     display: flex;
     align-items: center;
     gap: 1rem;
-    width: 20%;
-}
-
-.product-img img{
     width: 40%;
-    height: 85%;
 }
 
-.price{
+.item .product-img a {
+    max-width: 200px;
+}
+
+.item .product-img img {
+    width: 60%;
+    height: 65%;
+}
+
+.item .price {
     width: 17%;
+    margin-left: 3rem;
+
 }
 
-.quantity{
+.item .quantity {
     width: 10%;
     border: 1px solid gainsboro;
     padding: 5px;
     display: flex;
     justify-content: space-around;
-    margin-right: 6rem;
+    margin-right: 3rem;
 }
-.total{
+
+.total {
     margin-top: 4rem;
 }
-.total div{
+
+.total div {
     display: flex;
     justify-content: space-between;
     width: 30%;
@@ -84,12 +106,12 @@
     padding: 5px;
 }
 
-.total .number{
+.total .number {
     border-left: 1px solid gainsboro;
     padding-left: 8rem;
 }
 
-.total button{
+.total button {
     margin-left: 61.5rem;
     background-color: #252628;
     color: white;
@@ -110,22 +132,26 @@
     box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
     opacity: 0;
     border-radius: 0.25rem;
-  }
-  .toast:not(:last-child) {
+}
+
+.toast:not(:last-child) {
     margin-bottom: 0.75rem;
-  }
-  .toast.showing {
+}
+
+.toast.showing {
     opacity: 1;
-  }
-  .toast.show {
+}
+
+.toast.show {
     display: block;
     opacity: 1;
-  }
-  .toast.hide {
+}
+
+.toast.hide {
     display: none;
-  }
-  
-  .toast-header {
+}
+
+.toast-header {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -139,8 +165,8 @@
     border-bottom: 1px solid #ebedf3;
     border-top-right-radius: calc(0.25rem - 1px);
     border-top-left-radius: calc(0.25rem - 1px);
-  }
-  
-  .toast-body {
+}
+
+.toast-body {
     padding: 0.75rem;
-  }
+}

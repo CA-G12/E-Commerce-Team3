@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetails.css';
 import fetchUrl from '../../../utils/fetch';
+import { ToastContainer, toast } from 'react-toastify';
 
 function ProductDetails() {
   const { id } = useParams();
@@ -29,7 +30,16 @@ function ProductDetails() {
       .then((data) => {
         if (data) {
           console.log(data);
-          navigate(`/cart`);
+          toast.success('Product added successfully!', {
+            position: 'top-left',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          // navigate(`/cart`);
         }
       })
       .catch(console.log);
@@ -75,6 +85,7 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

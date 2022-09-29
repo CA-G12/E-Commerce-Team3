@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 
 function Root() {
   const [title, setTitle] = useState('');
+  // const [cartNumber, setCartNumber] = useState(0);
+
   return (
     <>
       <Header />

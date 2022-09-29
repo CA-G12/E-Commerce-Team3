@@ -10,7 +10,7 @@ function ProductList(props) {
       {productList ? (
         productList.map((item) => {
           console.log(item);
-          return <ProductCard productCard={item} />;
+          return <ProductCard productCard={item} key={item.id} />;
         })
       ) : (
         <div>Loading....</div>
