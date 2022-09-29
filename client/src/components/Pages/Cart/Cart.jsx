@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import fetchUrl from '../../../utils/fetch';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useOutletContext } from 'react-router-dom';
 function Cart() {
   const [productCarts, setCart] = useState([]);
   const [count, setCount] = useState(0);
-
+  const [title, setPageName] = useOutletContext();
   const changeValue = (e, quantity) => {
     const id = e.target.id;
     setCount(quantity);
@@ -20,7 +20,7 @@ function Cart() {
       console.log('product', data);
     });
   };
-
+  setPageName('Cart');
   const deleteProduct = (e) => {
     const id = e.target.id;
     setCount(+id + 1);

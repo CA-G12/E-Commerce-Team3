@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetails.css';
 import fetchUrl from '../../../utils/fetch';
 import { ToastContainer, toast } from 'react-toastify';
+import { useOutletContext } from 'react-router-dom';
 
 function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [titlee, setPageName] = useOutletContext();
 
   useEffect(() => {
     fetch(`/product/${id}`, {
@@ -18,7 +20,7 @@ function ProductDetails() {
       .then((data) => data.json())
       .then((data) => setProductDetails(data[0]));
   }, []);
-
+  setPageName('Product Details');
   const navigate = useNavigate();
 
   const addToCart = (e) => {

@@ -9,7 +9,7 @@ import './ProductContainer.css';
 import fetchUrl from '../../../utils/fetch';
 
 function ProductsContainer() {
-  const [title, cartNumber] = useOutletContext();
+  const [title, setPageName] = useOutletContext();
   const [category, setCategory] = useState('');
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(100);
@@ -45,7 +45,7 @@ function ProductsContainer() {
         console.log('sdjsdhsjd', err);
       });
   }, [title, category, priceMax, priceMin]);
-
+  setPageName('Products');
   return (
     <div className="products-container">
       <div className="filter-product">

@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 function Root() {
   const [title, setTitle] = useState('');
+  const [pageName, setPageName] = useState('');
 
   return (
     <>
@@ -28,8 +29,8 @@ function Root() {
       />
       <Header />
       <SecondHeader title={title} setTitle={setTitle} />
-      <PageTitle />
-      <Outlet context={[title]} />
+      <PageTitle pageName={pageName} />
+      <Outlet context={[title, setPageName]} />
       <Footer />
     </>
   );
