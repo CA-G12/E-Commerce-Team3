@@ -1,9 +1,8 @@
 import './PageTitle.css';
-
-function PageTitle() {
+function PageTitle({ title }) {
   return (
     <section className="name-page">
-      <h1>Cart</h1>
+      <h1>{title}</h1>
     </section>
   );
 }
