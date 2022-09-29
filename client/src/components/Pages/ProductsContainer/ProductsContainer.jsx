@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import fetchUrl from '../../../utils/fetch';
+import './ProductContainer.css';
+
 
 function ProductsContainer() {
   const [title, cartNumber] = useOutletContext();
@@ -16,6 +18,8 @@ function ProductsContainer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(3);
   const [categories, setCategories] = useState([]);
+  const [postsPerPage] = useState(10);
+
 
   // // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -43,6 +47,7 @@ function ProductsContainer() {
 
   return (
     <div className="products-container">
+<div className="filter-product">
       <Filters
         categories={categories}
         category={category}
@@ -53,6 +58,7 @@ function ProductsContainer() {
         setPriceMax={setPriceMax}
       />
       <ProductList productList={currentPosts} />
+         </div>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={productList.length}
