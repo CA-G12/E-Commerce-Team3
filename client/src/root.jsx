@@ -8,8 +8,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import ProductsContainer from './components/Pages/ProductsContainer/ProductsContainer';
 // import router from './routes/router';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 function Root() {
+  const [title, setTitle] = useState('');
+  // const [cartNumber, setCartNumber] = useState(0);
+
   return (
     <>
       <ToastContainer
@@ -24,9 +29,9 @@ function Root() {
         pauseOnHover
       />
       <Header />
-      <SecondHeader />
+      <SecondHeader title={title} setTitle={setTitle} />
       <PageTitle />
-      <Outlet />
+      <Outlet context={[title]} />
       <Footer />
     </>
   );
