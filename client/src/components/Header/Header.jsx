@@ -30,7 +30,6 @@ function Header(isLogged, setIsLogged) {
           </ul>
         </nav>
         <div className="languages">
-
           {!isLogged.isLogged ? (
             <span>
               <a href="/" onClick={handleChange}>

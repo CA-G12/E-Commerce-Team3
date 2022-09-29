@@ -35,7 +35,7 @@ function Signup() {
   const register = async (e) => {
     try {
       e.preventDefault();
-      await signSchema.validate({
+      await signSh.validate({
         username,
         email,
         password,
@@ -52,6 +52,7 @@ function Signup() {
       toast(`hello ${res.data.username}`);
       navigate('/');
     } catch (error) {
+      console.log(error);
       let errorMessage = '';
       if (error.errors instanceof Array) {
         errorMessage = error.errors[0];
@@ -70,80 +71,82 @@ function Signup() {
         progress: undefined,
       });
     }
-    return (
-      <div className="container-signup">
-        <div className="screen">
-          <div className="screen__content">
-            <form className="signup">
-              <div className="signup__field">
-                <i className="signup__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  className="signup__input"
-                  placeholder=" name"
-                  id="username"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="signup__field">
-                <i className=" signup__icon fas  fa-envelope"></i>
-                <input
-                  type="email"
-                  className="signup__input"
-                  placeholder="Email"
-                  id="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="signup__field">
-                <i className="signup__icon fas fa-lock"></i>
-                <input
-                  type="password"
-                  className="signup__input"
-                  placeholder="Password"
-                  id="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="signup__field">
-                <i className="signup__icon fas fa-lock"></i>
-                <input
-                  type="password"
-                  className="signup__input"
-                  placeholder=" confirm Password"
-                  id="confirmpassword"
-                  onChange={(e) => setConfPassword(e.target.value)}
-                />
-              </div>
-              <div className="signup__field">
-                <i className=" signup__icon fas fa-image"></i>
-                <input
-                  type="text"
-                  className="signup__input"
-                  placeholder=" image"
-                  id="logo"
-                  onChange={(e) => setAvatar(e.target.value)}
-                />
-              </div>
+  };
 
-              <span
-                onClick={register}
-                className="button signup__submit"
-                id="signup"
-              >
-                sign up Now
-              </span>
-            </form>
-          </div>
-          <div className="screen__background">
-            <span className="screen__background__shape screen__background__shape4"></span>
-            <span className="screen__background__shape screen__background__shape3"></span>
-            <span className="screen__background__shape screen__background__shape2"></span>
-            <span className="screen__background__shape screen__background__shape1"></span>
-          </div>
+  return (
+    <div className="container-signup">
+      <div className="screen">
+        <div className="screen__content">
+          <form className="signup">
+            <div className="signup__field">
+              <i className="signup__icon fas fa-user"></i>
+              <input
+                type="text"
+                className="signup__input"
+                placeholder=" name"
+                id="username"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="signup__field">
+              <i className=" signup__icon fas  fa-envelope"></i>
+              <input
+                type="email"
+                className="signup__input"
+                placeholder="Email"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="signup__field">
+              <i className="signup__icon fas fa-lock"></i>
+              <input
+                type="password"
+                className="signup__input"
+                placeholder="Password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="signup__field">
+              <i className="signup__icon fas fa-lock"></i>
+              <input
+                type="password"
+                className="signup__input"
+                placeholder=" confirm Password"
+                id="confirmpassword"
+                onChange={(e) => setConfPassword(e.target.value)}
+              />
+            </div>
+            <div className="signup__field">
+              <i className=" signup__icon fas fa-image"></i>
+              <input
+                type="text"
+                className="signup__input"
+                placeholder=" image"
+                id="logo"
+                onChange={(e) => setAvatar(e.target.value)}
+              />
+            </div>
+
+            <span
+              onClick={register}
+              className="button signup__submit"
+              id="signup"
+            >
+              sign up Now
+            </span>
+          </form>
+        </div>
+        <div className="screen__background">
+          <span className="screen__background__shape screen__background__shape4"></span>
+          <span className="screen__background__shape screen__background__shape3"></span>
+          <span className="screen__background__shape screen__background__shape2"></span>
+          <span className="screen__background__shape screen__background__shape1"></span>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
 }
+
 export default Signup;

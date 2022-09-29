@@ -40,12 +40,12 @@ function SecondHeader(props) {
             <i className="fa-solid fa-sort-down" />
             <ul>
               <li>
-                <Link to="/login" className="login">
+                <Link to="/users/signin" className="login">
                   Login
                 </Link>
               </li>
               <li>
-                <Link to="/signup" className="signup">
+                <Link to="/users/signup" className="signup">
                   Signup
                 </Link>
               </li>
