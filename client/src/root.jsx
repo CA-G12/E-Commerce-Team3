@@ -12,7 +12,6 @@ import { useState } from 'react';
 
 function Root() {
   const [title, setTitle] = useState('');
-  // const [cartNumber, setCartNumber] = useState(0);
 
   return (
     <>
