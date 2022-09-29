@@ -1,4 +1,3 @@
-
 import './Filters.css';
 function Filter(props) {
   const {
