@@ -42,6 +42,7 @@ module.exports = (req, res, next) => {
         id: userId,
         username: userName,
         email: userEmail,
+        avatar: userAvatar,
       };
 
       return jwt.sign(payload, process.env.SECRET, {

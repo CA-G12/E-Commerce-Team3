@@ -6,14 +6,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 function Cart() {
+  const { loading, setLoading } = useOutletContext();
   const [productCarts, setCart] = useState([]);
   const [count, setCount] = useState(0);
-  const [title, setPageName, user, setUser] = useOutletContext();
-
+  const { user, setUser, title, setPageName } = useOutletContext();
   setPageName('Cart');
   const navigate = useNavigate();
   const changeValue = (e, quantity) => {
     const id = e.target.id;
+    setLoading(true);
     setCount(quantity);
     if (quantity === 0) deleteProduct(e);
     fetchUrl('PUT', '/cart', {
@@ -21,11 +22,13 @@ function Cart() {
       userId: user.id,
       count: quantity,
     }).then((data) => {
+      setLoading(false);
       console.log('product', data);
     });
   };
 
   const deleteProduct = (e) => {
+    setLoading(true);
     const id = e.target.id;
     setCount(+id + 1);
     fetchUrl('DELETE', '/cart', {
@@ -33,6 +36,7 @@ function Cart() {
       userId: user.id,
     }).then((data) => {
       console.log('product', data, 444);
+      setLoading(false);
       toast.error('Product Deleted!', {
         position: 'top-left',
         autoClose: 5000,
@@ -48,6 +52,7 @@ function Cart() {
   useEffect(() => {
     console.log('tokennn', user);
     if (user.token) {
+      setLoading(true);
       fetch(`/cart/${user.id}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -55,6 +60,7 @@ function Cart() {
       })
         .then((data) => data.json())
         .then((data) => {
+          setLoading(false);
           console.log(data);
           setCart(data);
         });
