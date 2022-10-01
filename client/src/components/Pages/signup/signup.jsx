@@ -64,7 +64,7 @@ function Signup() {
         errorMessage = error.response.data.msg;
       }
       toast.error(errorMessage, {
-        position: 'bottom-left',
+        position: 'top-left',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

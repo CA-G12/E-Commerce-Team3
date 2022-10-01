@@ -17,7 +17,6 @@ function ProductsContainer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(9);
   const [categories, setCategories] = useState([]);
-
   // // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -27,25 +26,23 @@ function ProductsContainer() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
-    fetchUrl('GET', `/categories/`)
-      .then((data) => {
-        setCategories(data);
-      })
-      .then(() =>
-        fetchUrl(
-          'GET',
-          `/product/search/?title=${title}&category=${category}&maxPrice=${priceMax}&minPrice=${priceMin}`
-        )
-      )
-      .then((data) => {
-        console.log('Said Is Heere', data);
-        setProductList(data);
-      })
-      .catch((err) => {
-        console.log('sdjsdhsjd', err);
-      });
+    fetchUrl(
+      'GET',
+      `/product/search/?title=${title}&category=${category}&maxPrice=${priceMax}&minPrice=${priceMin}`
+    ).then((data) => {
+      console.log('Said Is Heere', data);
+      setProductList(data);
+    });
   }, [title, category, priceMax, priceMin]);
+
+  useEffect(() => {
+    fetchUrl('GET', `/categories/`).then((data) => {
+      console.log('categories', data);
+      setCategories(data);
+    });
+  }, []);
   setPageName('Products');
+
   return (
     <div className="products-container">
       <div className="filter-product">

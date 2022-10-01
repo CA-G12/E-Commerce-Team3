@@ -44,7 +44,7 @@ function SignIn() {
       if (res.data.status === 200) {
         setIsLogged(true);
         toast.success(`Hi ${res.data.user.name}`, {
-          position: 'top-right',
+          position: 'top-left',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -55,7 +55,7 @@ function SignIn() {
         navigate('/');
       } else {
         toast.error(res.data.status, {
-          position: 'bottom-left',
+          position: 'top-left',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -73,7 +73,7 @@ function SignIn() {
         errorMessage = error.response.data.msg;
       }
       toast.error(errorMessage, {
-        position: 'bottom-left',
+        position: 'top-left',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
