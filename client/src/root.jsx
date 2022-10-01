@@ -14,6 +14,21 @@ function Root() {
   const [pageName, setPageName] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({ token: false });
+
+  useEffect(() => {
+    fetch('/users/checkAuth')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('check auth data', data);
+        if (data.isLogged) {
+          setUser({ token: true, ...data });
+        } else {
+          setUser({ token: false });
+        }
+      });
+  }, []);
+
   useEffect(() => {
     localStorage.getItem('logged');
     setIsLogged(localStorage.getItem('logged'));
@@ -36,6 +51,8 @@ function Root() {
           setIsLogged,
           loading,
           setLoading,
+          user,
+          setUser,
         }}
       />
       <Footer />

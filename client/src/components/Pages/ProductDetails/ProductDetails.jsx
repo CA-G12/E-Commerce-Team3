@@ -10,7 +10,7 @@ function ProductDetails() {
   const [productDetails, setProductDetails] = useState([]);
   const { loading, setLoading } = useOutletContext();
   const [quantity, setQuantity] = useState(1);
-  const { title: titleone, setPageName } = useOutletContext();
+  const { title: titleone, setPageName, user, setUser } = useOutletContext();
 
   useEffect(() => {
     setLoading(true);
@@ -29,29 +29,43 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   const addToCart = (e) => {
-    setLoading(true);
-    fetchUrl('POST', '/cart', {
-      productId: id,
-      userId: 1,
-      count: quantity,
-    })
-      .then((data) => {
-        if (data) {
-          console.log(data);
-          setLoading(false);
-          toast.success('Product added successfully!', {
-            position: 'top-left',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          // navigate(`/cart`);
-        }
+    if (user.token) {
+      setLoading(true);
+      fetchUrl('POST', '/cart', {
+        productId: id,
+        userId: user.id,
+        count: quantity,
       })
-      .catch(console.log);
+        .then((data) => {
+          setLoading(false);
+          if (data) {
+            console.log(data);
+            toast.success('Product added successfully!', {
+              position: 'top-left',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            // navigate(`/cart`);
+          }
+        })
+        .catch((err) => setLoading(false));
+    } else {
+      // navigate('/users/signup');
+      setLoading(false);
+      toast.error('You Have To Sign Up!', {
+        position: 'top-left',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   console.log(quantity);
