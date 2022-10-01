@@ -9,7 +9,7 @@ import './ProductContainer.css';
 import fetchUrl from '../../../utils/fetch';
 
 function ProductsContainer() {
-  const [title, setPageName, user, setUser] = useOutletContext();
+  const { title, setPageName, user, setUser } = useOutletContext();
   const [category, setCategory] = useState('');
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(100);
@@ -17,6 +17,7 @@ function ProductsContainer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(9);
   const [categories, setCategories] = useState([]);
+  const { loading, setLoading } = useOutletContext();
 
   // // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -27,6 +28,7 @@ function ProductsContainer() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
+    setLoading(true);
     fetchUrl('GET', `/categories/`)
       .then((data) => {
         setCategories(data);
@@ -38,10 +40,12 @@ function ProductsContainer() {
         )
       )
       .then((data) => {
+        setLoading(false);
         console.log('Said Is Heere', data);
         setProductList(data);
       })
       .catch((err) => {
+        setLoading(false);
         console.log('sdjsdhsjd', err);
       });
   }, [title, category, priceMax, priceMin]);

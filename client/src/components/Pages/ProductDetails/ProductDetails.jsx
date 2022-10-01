@@ -8,29 +8,36 @@ import { useOutletContext } from 'react-router-dom';
 function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
+  const { loading, setLoading } = useOutletContext();
   const [quantity, setQuantity] = useState(1);
-  const [titlee, setPageName, user, setUser] = useOutletContext();
+  const { title: titleone, setPageName, user, setUser } = useOutletContext();
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/product/${id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((data) => data.json())
-      .then((data) => setProductDetails(data[0]));
+      .then((data) => {
+        setProductDetails(data[0]);
+        setLoading(false);
+      });
   }, []);
   setPageName('Product Details');
   const navigate = useNavigate();
 
   const addToCart = (e) => {
     if (user.token) {
+      setLoading(true);
       fetchUrl('POST', '/cart', {
         productId: id,
         userId: user.id,
         count: quantity,
       })
         .then((data) => {
+          setLoading(false);
           if (data) {
             console.log(data);
             toast.success('Product added successfully!', {
@@ -45,9 +52,10 @@ function ProductDetails() {
             // navigate(`/cart`);
           }
         })
-        .catch(console.log);
+        .catch((err) => setLoading(false));
     } else {
       // navigate('/users/signup');
+      setLoading(false);
       toast.error('You Have To Sign Up!', {
         position: 'top-left',
         autoClose: 2000,
