@@ -11,27 +11,40 @@ function ProductCard(props) {
   const addToCart = (e) => {
     const id = e.target.id;
     console.log(e.target.id);
-
-    fetchUrl('POST', '/cart', {
-      productId: id,
-      userId: user.id,
-      count: 1,
-    })
-      .then((data) => {
-        if (data) {
-          toast.success('Product added successfully!', {
-            position: 'top-left',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          // navigate(`/cart`);
-        }
+    // if (user.token === false) navigate('/users/signup');
+    if (user.token) {
+      fetchUrl('POST', '/cart', {
+        productId: id,
+        userId: user.id,
+        count: 1,
       })
-      .catch(console.log);
+        .then((data) => {
+          if (data) {
+            toast.success('Product added successfully!', {
+              position: 'top-left',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            // navigate(`/cart`);
+          }
+        })
+        .catch(console.log);
+    } else {
+      // navigate('/users/signup');
+      toast.error('You Have To Sign Up!', {
+        position: 'top-left',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (

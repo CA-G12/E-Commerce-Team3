@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import signSchema from '../../../utils/fetch';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useOutletContext } from 'react-router-dom';
 
 import './signup.css';
 const signSh = yup.object().shape({
@@ -32,6 +33,8 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfPassword] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [title, setPageName, user, setUser] = useOutletContext();
+  setPageName('Sign Up');
   const register = async (e) => {
     try {
       e.preventDefault();

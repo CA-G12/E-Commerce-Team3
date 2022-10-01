@@ -9,7 +9,7 @@ function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const [titlee, setPageName] = useOutletContext();
+  const [titlee, setPageName, user, setUser] = useOutletContext();
 
   useEffect(() => {
     fetch(`/product/${id}`, {
@@ -24,27 +24,40 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   const addToCart = (e) => {
-    fetchUrl('POST', '/cart', {
-      productId: id,
-      userId: 1,
-      count: quantity,
-    })
-      .then((data) => {
-        if (data) {
-          console.log(data);
-          toast.success('Product added successfully!', {
-            position: 'top-left',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          // navigate(`/cart`);
-        }
+    if (user.token) {
+      fetchUrl('POST', '/cart', {
+        productId: id,
+        userId: user.id,
+        count: quantity,
       })
-      .catch(console.log);
+        .then((data) => {
+          if (data) {
+            console.log(data);
+            toast.success('Product added successfully!', {
+              position: 'top-left',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            // navigate(`/cart`);
+          }
+        })
+        .catch(console.log);
+    } else {
+      // navigate('/users/signup');
+      toast.error('You Have To Sign Up!', {
+        position: 'top-left',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   console.log(quantity);
