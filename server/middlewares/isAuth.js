@@ -10,7 +10,6 @@ module.exports = (req, res, next) => {
       throw new CustumError(401, 'Unauthorized');
     } else {
       const decoded = jwt.verify(token, process.env.SECRET);
-      console.log('decoded verify2', decoded);
       req.user = decoded;
       next();
     }
