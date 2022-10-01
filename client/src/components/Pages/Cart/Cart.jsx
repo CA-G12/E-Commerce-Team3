@@ -10,6 +10,7 @@ function Cart() {
   const [count, setCount] = useState(0);
   const [title, setPageName, user, setUser] = useOutletContext();
 
+  console.log('cart', user);
   setPageName('Cart');
   const navigate = useNavigate();
   const changeValue = (e, quantity) => {

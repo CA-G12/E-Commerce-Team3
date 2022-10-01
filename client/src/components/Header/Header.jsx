@@ -1,12 +1,37 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import fetchUrl from '../../utils/fetch';
 
-function Header(isLogged, setIsLogged) {
-  console.log(isLogged.isLogged);
+function Header({ isLogged, setIsLogged }) {
   function handleChange() {
-    setIsLogged(false);
+    fetchUrl('GET', '/users/logout').then((result) => {
+      console.log(result);
+      if (result.status == 200) {
+        setIsLogged(false);
+        localStorage.setItem('logged', 'false');
+      }
+    });
   }
+
+  const status = () => {
+    console.log('isLogged', isLogged);
+    return isLogged.toString() === 'true' ? (
+      <span>
+        <Link onClick={handleChange}>logOut</Link>
+      </span>
+    ) : (
+      <>
+        <span>
+          <Link to="/users/signin">Sign In</Link>
+        </span>
+        <span>
+          <Link to="/signup">Sign Up</Link>
+        </span>
+      </>
+    );
+  };
+
   return (
     <header>
       <div className="container">
@@ -29,24 +54,7 @@ function Header(isLogged, setIsLogged) {
             </li>
           </ul>
         </nav>
-        <div className="languages">
-          {!isLogged.isLogged ? (
-            <span>
-              <a href="/" onClick={handleChange}>
-                logOut
-              </a>
-            </span>
-          ) : (
-            <>
-              <span>
-                <a href="/users/signin">Sign In</a>
-              </span>
-              <span>
-                <a href="/signup">Sign Up</a>
-              </span>
-            </>
-          )}
-        </div>
+        <div className="languages">{status()}</div>
       </div>
     </header>
   );
