@@ -1,127 +1,51 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Raleway, sans-serif;
-}
-
 .sign-in-container {
+  margin-top: 3rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0 0 8rem;
+  gap: 1.5rem;
 }
-
-.screen {
-  background: white;
-  position: relative;
-  height: 600px;
-  width: 360px;
-  box-shadow: 0px 0px 24px;
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 80%;
 }
-
-.screencontent {
-  z-index: 1;
-  position: relative;
-  height: 100%;
+.sign-in-form .loginfield {
+  width: 80%;
 }
-
-.screenbackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  -webkit-clip-path: inset(0 0 0 0);
-  clip-path: inset(0 0 0 0);
+.sign-in-form .loginfield i {
+  width: 1rem;
 }
-
-.screenbackgroundshape {
-  transform: rotate(45deg);
-  position: absolute;
-}
-
-.screenbackgroundshape1 {
-  height: 520px;
-  width: 520px;
-  background: #eee;
-  top: -50px;
-  right: 120px;
-  border-radius: 0 72px 0 0;
-}
-
-.screenbackgroundshape2 {
-  height: 220px;
-  width: 220px;
-  background: black;
-  top: -172px;
-  right: 0;
-  border-radius: 32px;
-}
-
-.screenbackgroundshape3 {
-  height: 540px;
-  width: 190px;
-  background: black;
-  top: -24px;
-  right: 0;
-  border-radius: 32px;
-}
-
-.sign-in-container .login {
-  width: 320px;
-  padding: 30px;
-  padding-top: 175px;
-  padding-left: 7px;
-}
-
-.sign-in-container .loginfield {
-  padding: 20px 0px;
-  position: relative;
-}
-
-.logininput {
+.sign-in-form .loginfield input {
+  width: 50%;
+  height: 2rem;
   border: none;
-  border-bottom: 2px solid #d1d1d4;
-  background: none;
-  padding: 7px;
-  padding-left: 24px;
-  font-weight: 700;
-  width: 75%;
-  transition: 0.2s;
-}
-
-.logininput:active,
-.logininput:focus,
-.logininput:hover {
   outline: none;
-  border-bottom-color: black;
+  border-bottom: 0.1rem solid;
 }
 
-.loginsubmit {
-  background: #fff;
-  font-size: 14px;
-  margin-top: 50px;
-  padding: 16px 20px;
-  border-radius: 14px;
-  border: 1px solid #d4d3e8;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  color: black;
-  box-shadow: 0px 2px 2px black;
+.sign-in-form button {
+  height: 2rem;
+  background-color: black;
+  width: 8rem;
+  color: white;
+  height: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.sign-in-form button span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.sign-in-form button span:hover {
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.loginsubmit:active,
-.loginsubmit:focus,
-.loginsubmit:hover {
-  border-color: black;
-  outline: none;
+.sign-in-form button i {
+  color: white;
 }
