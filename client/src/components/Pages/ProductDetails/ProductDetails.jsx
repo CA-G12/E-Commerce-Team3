@@ -8,22 +8,28 @@ import { useOutletContext } from 'react-router-dom';
 function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
+  const { loading, setLoading } = useOutletContext();
   const [quantity, setQuantity] = useState(1);
-  const [titlee, setPageName] = useOutletContext();
+  const { title: titleone, setPageName } = useOutletContext();
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/product/${id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((data) => data.json())
-      .then((data) => setProductDetails(data[0]));
+      .then((data) => {
+        setProductDetails(data[0]);
+        setLoading(false);
+      });
   }, []);
   setPageName('Product Details');
   const navigate = useNavigate();
 
   const addToCart = (e) => {
+    setLoading(true);
     fetchUrl('POST', '/cart', {
       productId: id,
       userId: 1,
@@ -32,6 +38,7 @@ function ProductDetails() {
       .then((data) => {
         if (data) {
           console.log(data);
+          setLoading(false);
           toast.success('Product added successfully!', {
             position: 'top-left',
             autoClose: 2000,

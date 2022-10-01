@@ -6,22 +6,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useOutletContext } from 'react-router-dom';
 function Cart() {
+  const { loading, setLoading } = useOutletContext();
   const [productCarts, setCart] = useState([]);
   const [count, setCount] = useState(0);
-  const [title, setPageName] = useOutletContext();
+  const { title, setPageName } = useOutletContext();
   const changeValue = (e, quantity) => {
     const id = e.target.id;
     setCount(quantity);
+    setLoading(true);
     fetchUrl('PUT', '/cart', {
       productId: id,
       userId: 1,
       count: quantity,
     }).then((data) => {
+      setLoading(false);
       console.log('product', data);
     });
   };
   setPageName('Cart');
   const deleteProduct = (e) => {
+    setLoading(true);
     const id = e.target.id;
     setCount(+id + 1);
     fetchUrl('DELETE', '/cart', {
@@ -29,6 +33,7 @@ function Cart() {
       userId: 1,
     }).then((data) => {
       console.log('product', data, 444);
+      setLoading(false);
       toast.error('Product Deleted!', {
         position: 'top-left',
         autoClose: 5000,
@@ -42,6 +47,7 @@ function Cart() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch('/cart/1', {
       headers: {
         'Content-Type': 'application/json',
@@ -51,6 +57,7 @@ function Cart() {
       .then((data) => {
         console.log(data);
         setCart(data);
+        setLoading(false);
       });
   }, [count]);
   return (

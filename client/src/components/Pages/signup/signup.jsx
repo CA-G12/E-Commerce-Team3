@@ -34,6 +34,7 @@ function Signup() {
   const register = async (e) => {
     try {
       e.preventDefault();
+      setLoading(true);
       await signSh.validate({
         username,
         email,
