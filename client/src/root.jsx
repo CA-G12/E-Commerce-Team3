@@ -26,7 +26,7 @@ function Root() {
           setUser({ token: false });
         }
       });
-  }, []);
+  }, [isLogged]);
 
   useEffect(() => {
     localStorage.getItem('logged');
@@ -38,8 +38,15 @@ function Root() {
   return (
     <>
       <ToastContainer />
-      <Header />
-      <SecondHeader title={title} setTitle={setTitle} />
+      <Header isLogged={isLogged} setIsLogged={setIsLogged} user={user} />
+      <SecondHeader
+        title={title}
+        setTitle={setTitle}
+        isLogged={isLogged}
+        setIsLogged={setIsLogged}
+        user={user}
+        setUser={setUser}
+      />
       <PageTitle pageName={pageName} />
       <Outlet
         context={[title, setPageName, user, setUser, isLogged, setIsLogged]}
