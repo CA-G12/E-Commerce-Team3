@@ -85,44 +85,35 @@ function SignIn() {
 
   return (
     <div className="sign-in-container">
-      <div className="screen">
-        <div className="screencontent">
-          <form className="login">
-            <div className="loginfield">
-              <i className=" loginicon fas  fa-envelope"></i>
-              <input
-                type="email"
-                className="logininput"
-                placeholder="Email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="loginfield">
-              <i className="loginicon fas fa-lock"></i>
-              <input
-                type="password"
-                className="logininput"
-                placeholder="Password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <button type="button" className="button loginsubmit" id="login">
-              <span className="buttontext" onClick={signin}>
-                Log In Now
-              </span>
-              <i className="buttonicon fas fa-chevron-right"></i>
-            </button>
-          </form>
+      <h3>Fill Up The Form</h3>
+      <form className="sign-in-form">
+        <div className="loginfield">
+          <i className=" loginicon fas  fa-envelope"></i>
+          <input
+            type="email"
+            className="logininput"
+            placeholder="Email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        <div className="screenbackground">
-          <span className="screenbackgroundshape screenbackgroundshape4"></span>
-          <span className="screenbackgroundshape screenbackgroundshape3"></span>
-          <span className="screenbackgroundshape screenbackgroundshape2"></span>
-          <span className="screenbackgroundshape screenbackgroundshape1"></span>
+        <div className="loginfield">
+          <i className="loginicon fas fa-lock"></i>
+          <input
+            type="password"
+            className="logininput"
+            placeholder="Password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-      </div>
+        <button type="button" className="button loginsubmit" id="login">
+          <span className="buttontext" onClick={signin}>
+            Sign In
+          </span>
+          <i className="buttonicon fas fa-chevron-right"> </i>
+        </button>
+      </form>
     </div>
   );
 }

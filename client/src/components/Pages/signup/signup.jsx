@@ -2,27 +2,26 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import signSchema from '../../../utils/fetch';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './signup.css';
 const signSh = yup.object().shape({
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'The field must match')
+    .required('The confirm password field is required'),
+  avatar: yup.string().required('The Image field is required'),
+  password: yup
+    .string()
+    .min(8, 'must be more than 8 characters')
+    .required('The password field is required'),
   username: yup.string().required('The name field is required'),
   email: yup
     .string()
     .email('this field must be an email')
     .required('The email field is required')
     .trim(),
-  password: yup
-    .string()
-    .min(8, 'must be more than 8 characters')
-    .required('The password field is required'),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('password')], 'The field must match')
-    .required('The confirm password field is required'),
-  avatar: yup.string().required('The avatar  field is required'),
 });
 
 function Signup() {
@@ -74,77 +73,63 @@ function Signup() {
   };
 
   return (
-    <div className="container-signup">
-      <div className="screen">
-        <div className="screen__content">
-          <form className="signup">
-            <div className="signup__field">
-              <i className="signup__icon fas fa-user"></i>
-              <input
-                type="text"
-                className="signup__input"
-                placeholder=" name"
-                id="username"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="signup__field">
-              <i className=" signup__icon fas  fa-envelope"></i>
-              <input
-                type="email"
-                className="signup__input"
-                placeholder="Email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="signup__field">
-              <i className="signup__icon fas fa-lock"></i>
-              <input
-                type="password"
-                className="signup__input"
-                placeholder="Password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="signup__field">
-              <i className="signup__icon fas fa-lock"></i>
-              <input
-                type="password"
-                className="signup__input"
-                placeholder=" confirm Password"
-                id="confirmpassword"
-                onChange={(e) => setConfPassword(e.target.value)}
-              />
-            </div>
-            <div className="signup__field">
-              <i className=" signup__icon fas fa-image"></i>
-              <input
-                type="text"
-                className="signup__input"
-                placeholder=" image"
-                id="logo"
-                onChange={(e) => setAvatar(e.target.value)}
-              />
-            </div>
-
-            <span
-              onClick={register}
-              className="button signup__submit"
-              id="signup"
-            >
-              sign up Now
-            </span>
-          </form>
+    <div className="sign-up-container ">
+      <h3>Fill Up The Form</h3>
+      <form className="sign-up-form">
+        <div className="signupfield">
+          <i className="signupicon fas fa-user"></i>
+          <input
+            type="text"
+            className="signupinput"
+            placeholder=" name"
+            id="username"
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-        <div className="screen__background">
-          <span className="screen__background__shape screen__background__shape4"></span>
-          <span className="screen__background__shape screen__background__shape3"></span>
-          <span className="screen__background__shape screen__background__shape2"></span>
-          <span className="screen__background__shape screen__background__shape1"></span>
+        <div className="signupfield">
+          <i className=" signupicon fas  fa-envelope"></i>
+          <input
+            type="email"
+            className="signupinput"
+            placeholder="Email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-      </div>
+        <div className="signupfield">
+          <i className="signupicon fas fa-lock"></i>
+          <input
+            type="password"
+            className="signupinput"
+            placeholder="Password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="signupfield">
+          <i className="signupicon fas fa-lock"></i>
+          <input
+            type="password"
+            className="signupinput"
+            placeholder=" confirm Password"
+            id="confirmpassword"
+            onChange={(e) => setConfPassword(e.target.value)}
+          />
+        </div>
+        <div className="signupfield">
+          <i className=" signupicon fas fa-image"></i>
+          <input
+            type="text"
+            className="signupinput"
+            placeholder=" image"
+            id="logo"
+            onChange={(e) => setAvatar(e.target.value)}
+          />
+        </div>
+      </form>
+      <span onClick={register} className="button signupsubmit" id="signup">
+        Sign Up Now
+      </span>
     </div>
   );
 }
