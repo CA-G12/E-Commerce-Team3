@@ -14,7 +14,6 @@ function Cart() {
   const navigate = useNavigate();
   const changeValue = (e, quantity) => {
     const id = e.target.id;
-    setLoading(true);
     setCount(quantity);
     if (quantity === 0) deleteProduct(e);
     fetchUrl('PUT', '/cart', {
@@ -22,7 +21,6 @@ function Cart() {
       userId: user.id,
       count: quantity,
     }).then((data) => {
-      setLoading(false);
       console.log('product', data);
     });
   };
@@ -52,7 +50,6 @@ function Cart() {
   useEffect(() => {
     console.log('tokennn', user);
     if (user.token) {
-      setLoading(true);
       fetch(`/cart/${user.id}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +57,6 @@ function Cart() {
       })
         .then((data) => data.json())
         .then((data) => {
-          setLoading(false);
           console.log(data);
           setCart(data);
         });

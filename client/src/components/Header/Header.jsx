@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import fetchUrl from '../../utils/fetch';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ isLogged, setIsLogged, user }) {
+  const navigate = useNavigate();
   function handleChange() {
     fetchUrl('GET', '/users/logout').then((result) => {
       console.log(result);
       if (result.status == 200) {
         setIsLogged(false);
         localStorage.setItem('logged', 'false');
+        navigate('/');
       }
     });
   }
