@@ -32,7 +32,8 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfPassword] = useState('');
   const [avatar, setAvatar] = useState('');
-  const { title, setPageName, user, setUser } = useOutletContext();
+  const { title, setPageName, user, setUser, isLogged, setIsLogged } =
+    useOutletContext();
   setPageName('Sign Up');
   const register = async (e) => {
     try {
@@ -52,10 +53,10 @@ function Signup() {
         password,
         avatar,
       });
+      setIsLogged(true);
       toast(`hello ${res.data.username}`);
       navigate('/');
     } catch (error) {
-      console.log(error);
       let errorMessage = '';
       if (error.errors instanceof Array) {
         errorMessage = error.errors[0];

@@ -41,7 +41,6 @@ function SignIn() {
   const signin = async (e) => {
     e.preventDefault();
     try {
-      console.log(loading, 'loading value fron asyinc');
       setLoading(true);
       await loginValidationSchema.validate({
         email,
@@ -53,7 +52,7 @@ function SignIn() {
       });
 
       if (res.data.status === 200) {
-        // setIsLogged(true);
+        setIsLogged(true);
         setLoading(false);
         toast.success(`Hi ${res.data.user.name}`, {
           position: 'top-left',
@@ -77,7 +76,6 @@ function SignIn() {
         });
       }
     } catch (error) {
-      // console.log(error);
       setLoading(false);
       let errorMessage = '';
       if (error.errors instanceof Array) {
