@@ -32,7 +32,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfPassword] = useState('');
   const [avatar, setAvatar] = useState('');
-  const [title, setPageName, user, setUser] = useOutletContext();
+  const { title, setPageName, user, setUser } = useOutletContext();
   setPageName('Sign Up');
   const register = async (e) => {
     try {

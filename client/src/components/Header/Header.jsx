@@ -32,7 +32,7 @@ function Header({ isLogged, setIsLogged, user }) {
           <Link to="/users/signin">Sign In</Link>
         </span>
         <span>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/users/signup">Sign Up</Link>
         </span>
       </>
     );
