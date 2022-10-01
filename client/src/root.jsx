@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 function Root() {
   const [title, setTitle] = useState('');
   const [pageName, setPageName] = useState('');
-  // const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState({ token: false });
 
   useEffect(() => {
@@ -28,20 +28,22 @@ function Root() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.getItem('logged');
-  //   setIsLogged(localStorage.getItem('logged'));
-  // }, []);
-  // useEffect(() => {
-  //   localStorage.setItem('logged', isLogged);
-  // }, [isLogged]);
+  useEffect(() => {
+    localStorage.getItem('logged');
+    setIsLogged(localStorage.getItem('logged'));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('logged', isLogged);
+  }, [isLogged]);
   return (
     <>
       <ToastContainer />
       <Header />
       <SecondHeader title={title} setTitle={setTitle} />
       <PageTitle pageName={pageName} />
-      <Outlet context={[title, setPageName, user, setUser]} />
+      <Outlet
+        context={[title, setPageName, user, setUser, isLogged, setIsLogged]}
+      />
 
       <Footer />
     </>
