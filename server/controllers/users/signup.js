@@ -25,13 +25,16 @@ const signup = (req, res, next) => {
     })
 
     .then((hashed) => createUser(username, email, hashed, avatar))
-    .then((data) => ({
-      id: data.rows.id,
-      email,
-      username,
-    }))
-    .then((payload) => jwtSign(payload))
+    .then((data) => {
+      console.log(data.rows[0].id);
+      return { id: data.rows[0].id, email, username };
+    })
+    .then((payload) => {
+      console.log('payload', payload);
+      return jwtSign(payload);
+    })
     .then((token) => {
+      console.log('token sign up', token);
       if (token) {
         res.cookie('token', token, { httpOnly: true }).status(201).json({
           sucess: true,

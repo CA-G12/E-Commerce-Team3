@@ -4,29 +4,33 @@ import { Link } from 'react-router-dom';
 import fetchUrl from '../../../utils/fetch';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 function Cart() {
   const [productCarts, setCart] = useState([]);
   const [count, setCount] = useState(0);
-  const [title, setPageName] = useOutletContext();
+  const [title, setPageName, user, setUser] = useOutletContext();
+
+  setPageName('Cart');
+  const navigate = useNavigate();
   const changeValue = (e, quantity) => {
     const id = e.target.id;
     setCount(quantity);
+    if (quantity === 0) deleteProduct(e);
     fetchUrl('PUT', '/cart', {
       productId: id,
-      userId: 1,
+      userId: user.id,
       count: quantity,
     }).then((data) => {
       console.log('product', data);
     });
   };
-  setPageName('Cart');
+
   const deleteProduct = (e) => {
     const id = e.target.id;
     setCount(+id + 1);
     fetchUrl('DELETE', '/cart', {
       productId: id,
-      userId: 1,
+      userId: user.id,
     }).then((data) => {
       console.log('product', data, 444);
       toast.error('Product Deleted!', {
@@ -42,16 +46,21 @@ function Cart() {
   };
 
   useEffect(() => {
-    fetch('/cart/1', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((data) => data.json())
-      .then((data) => {
-        console.log(data);
-        setCart(data);
-      });
+    console.log('tokennn', user);
+    if (user.token) {
+      fetch(`/cart/${user.id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((data) => data.json())
+        .then((data) => {
+          console.log(data);
+          setCart(data);
+        });
+    } else {
+      navigate('/');
+    }
   }, [count]);
   return (
     <>
@@ -62,38 +71,42 @@ function Cart() {
           <div>Quantity</div>
           <div>Total</div>
         </div>
-        {productCarts.map((ele) => (
-          <div className="item" key={ele.id}>
-            <div className="product-img">
-              <i
-                className="fa-solid fa-xmark"
-                id={ele.id}
-                onClick={(e) => {
-                  deleteProduct(e);
-                }}
-              ></i>
-              <Link to={`/products/${ele.id}`}>
-                <img src={ele.image} alt={ele.title} />
-              </Link>
-              <p>{ele.title}</p>
+        {productCarts.length === 0 ? (
+          <h2>No products</h2>
+        ) : (
+          productCarts.map((ele) => (
+            <div className="item" key={ele.id}>
+              <div className="product-img">
+                <i
+                  className="fa-solid fa-xmark"
+                  id={ele.id}
+                  onClick={(e) => {
+                    deleteProduct(e);
+                  }}
+                ></i>
+                <Link to={`/products/${ele.id}`}>
+                  <img src={ele.image} alt={ele.title} />
+                </Link>
+                <p>{ele.title}</p>
+              </div>
+              <div className="price">${ele.price}</div>
+              <div className="quantity">
+                <i
+                  className="fa-solid fa-minus"
+                  id={ele.id}
+                  onClick={(e) => changeValue(e, +ele.count - 1)}
+                ></i>
+                <span>{ele.count}</span>
+                <i
+                  className="fa-solid fa-plus"
+                  id={ele.id}
+                  onClick={(e) => changeValue(e, +ele.count + 1)}
+                ></i>
+              </div>
+              <div>${ele.count * ele.price}</div>
             </div>
-            <div className="price">${ele.price}</div>
-            <div className="quantity">
-              <i
-                className="fa-solid fa-minus"
-                id={ele.id}
-                onClick={(e) => changeValue(e, +ele.count - 1)}
-              ></i>
-              <span>{ele.count}</span>
-              <i
-                className="fa-solid fa-plus"
-                id={ele.id}
-                onClick={(e) => changeValue(e, +ele.count + 1)}
-              ></i>
-            </div>
-            <div>${ele.count * ele.price}</div>
-          </div>
-        ))}
+          ))
+        )}
       </section>
       <section className="total">
         <div>

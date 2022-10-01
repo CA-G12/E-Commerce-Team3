@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function ProductCard(props) {
   const { id, title, image, price } = props.productCard;
+  const user = props.user;
   const navigate = useNavigate();
 
   const addToCart = (e) => {
@@ -13,7 +14,7 @@ function ProductCard(props) {
 
     fetchUrl('POST', '/cart', {
       productId: id,
-      userId: 1,
+      userId: user.id,
       count: 1,
     })
       .then((data) => {

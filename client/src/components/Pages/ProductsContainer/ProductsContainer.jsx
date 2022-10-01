@@ -9,7 +9,7 @@ import './ProductContainer.css';
 import fetchUrl from '../../../utils/fetch';
 
 function ProductsContainer() {
-  const [title, setPageName] = useOutletContext();
+  const [title, setPageName, user, setUser] = useOutletContext();
   const [category, setCategory] = useState('');
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(100);
@@ -58,7 +58,7 @@ function ProductsContainer() {
           priceMax={priceMax}
           setPriceMax={setPriceMax}
         />
-        <ProductList productList={currentPosts} />
+        <ProductList productList={currentPosts} user={user} />
       </div>
       <Pagination
         postsPerPage={postsPerPage}

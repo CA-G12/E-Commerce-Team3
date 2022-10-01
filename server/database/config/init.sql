@@ -207,7 +207,7 @@ VALUES
 
 
 INSERT INTO users (name, email, password, avatar) VALUES
-('Test', 'test@hotmail.com' ,'123', NULL),
+('Test', 'test@hotmail.com' ,'12345678', NULL),
 ('Yazeed', 'yazeed@hotmail.com' ,'123', NULL),
 ('Saeed', 'saeed@hotmail.com' ,'123', NULL);
 
