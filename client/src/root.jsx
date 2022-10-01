@@ -13,6 +13,21 @@ function Root() {
   const [title, setTitle] = useState('');
   const [pageName, setPageName] = useState('');
   const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState({ token: false });
+
+  useEffect(() => {
+    fetch('/users/checkAuth')
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('check auth data', data);
+        if (data.isLogged) {
+          setUser({ token: true, ...data });
+        } else {
+          setUser({ token: false });
+        }
+      });
+  }, []);
+
   useEffect(() => {
     localStorage.getItem('logged');
     setIsLogged(localStorage.getItem('logged'));
@@ -26,7 +41,9 @@ function Root() {
       <Header />
       <SecondHeader title={title} setTitle={setTitle} />
       <PageTitle pageName={pageName} />
-      <Outlet context={[title, setPageName, isLogged, setIsLogged]} />
+      <Outlet
+        context={[title, setPageName, user, setUser, isLogged, setIsLogged]}
+      />
 
       <Footer />
     </>

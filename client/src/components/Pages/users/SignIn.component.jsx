@@ -22,8 +22,9 @@ const loginValidationSchema = yup
   .required();
 
 function SignIn() {
-  const [isLogged, setIsLogged] = useOutletContext();
-
+  const [title, setPageName, user, setUser, isLogged, setIsLogged] =
+    useOutletContext();
+  setPageName('Log In');
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
