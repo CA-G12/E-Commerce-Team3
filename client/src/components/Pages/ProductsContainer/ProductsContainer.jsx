@@ -49,7 +49,15 @@ function ProductsContainer() {
         console.log('sdjsdhsjd', err);
       });
   }, [title, category, priceMax, priceMin]);
+
+  useEffect(() => {
+    fetchUrl('GET', `/categories/`).then((data) => {
+      console.log('categories', data);
+      setCategories(data);
+    });
+  }, []);
   setPageName('Products');
+
   return (
     <div className="products-container">
       <div className="filter-product">
