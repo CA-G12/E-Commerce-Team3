@@ -32,11 +32,22 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfPassword] = useState('');
   const [avatar, setAvatar] = useState('');
-  const { title, setPageName, user, setUser, isLogged, setIsLogged } =
-    useOutletContext();
+  let {
+    title,
+    setPageName,
+    loading,
+    setLoading,
+    user,
+    setUser,
+    isLogged,
+    setIsLogged,
+  } = useOutletContext();
+  console.log(isLogged);
+  console.log(setIsLogged);
   setPageName('Sign Up');
   const register = async (e) => {
     try {
+      setIsLogged(true);
       e.preventDefault();
       setLoading(true);
       await signSh.validate({
@@ -54,9 +65,11 @@ function Signup() {
         avatar,
       });
       setIsLogged(true);
+      setIsLogged(false);
       toast(`hello ${res.data.username}`);
       navigate('/');
     } catch (error) {
+      setIsLogged(false);
       let errorMessage = '';
       if (error.errors instanceof Array) {
         errorMessage = error.errors[0];
