@@ -3,9 +3,38 @@ import './SecondHeader.css';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function SecondHeader(props) {
-  const { title, setTitle } = props;
+function SecondHeader({ title, setTitle, isLogged, setIsLogged, user }) {
   const [inputSearch, setInput] = useState('');
+  console.log('avatar', user);
+
+  const status = () => {
+    console.log('isLogged', isLogged);
+    console.log('user-avatar', user);
+    return isLogged.toString() !== 'true' ? (
+      <Link to="/" className="user-info">
+        <i className="fa-solid fa-user" />
+        <i className="fa-solid fa-sort-down" />
+        <ul>
+          <li>
+            <Link to="/users/signin" className="login">
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link to="/users/signup" className="signup">
+              Signup
+            </Link>
+          </li>
+        </ul>
+      </Link>
+    ) : (
+      <Link to="/" className="user-info">
+        <img src={user && user.avatar} alt="product" />
+        <span className="username">{user && user.username}</span>
+      </Link>
+    );
+  };
+
   return (
     <div className="search-user">
       <div className="container">
@@ -35,41 +64,14 @@ function SecondHeader(props) {
           </button>
         </div>
         <div className="right">
-          <Link to="/" className="user-info">
-            <i className="fa-solid fa-user" />
-            <i className="fa-solid fa-sort-down" />
-            <ul>
-              <li>
-                <Link to="/users/signin" className="login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/users/signup" className="signup">
-                  Signup
-                </Link>
-              </li>
-            </ul>
-          </Link>
-          <Link to="/" className="user-info" style={{ display: 'none' }}>
-            <img src="/green-t-shirt.jpg" alt="product" />
-            <span className="username">Username</span>
-          </Link>
+          {/* {status()} */}
           <Link to="/cart" className="cart-link">
             <i className="fa-solid fa-cart-shopping" />
             <span>1</span>
-            {/* <ul>
-              <li>
-                <Link to="/" className="logout">
-                  Logout
-                </Link>
-              </li>
-            </ul> */}
           </Link>
         </div>
       </div>
     </div>
   );
 }
-
 export default SecondHeader;

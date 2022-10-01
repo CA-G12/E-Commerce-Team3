@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import fetchUrl from '../../utils/fetch';
 
-function Header({ isLogged, setIsLogged }) {
+function Header({ isLogged, setIsLogged, user }) {
   function handleChange() {
     fetchUrl('GET', '/users/logout').then((result) => {
       console.log(result);
@@ -17,9 +17,15 @@ function Header({ isLogged, setIsLogged }) {
   const status = () => {
     console.log('isLogged', isLogged);
     return isLogged.toString() === 'true' ? (
-      <span>
-        <Link onClick={handleChange}>logOut</Link>
-      </span>
+      <>
+        <Link to="/">
+          <span className="username">welcome {user && user.username}</span>
+        </Link>
+        <span> | </span>
+        <span>
+          <Link onClick={handleChange}>logOut</Link>
+        </span>
+      </>
     ) : (
       <>
         <span>

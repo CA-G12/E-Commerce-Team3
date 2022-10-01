@@ -38,12 +38,14 @@ function Root() {
   return (
     <>
       <ToastContainer />
-      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
+      <Header isLogged={isLogged} setIsLogged={setIsLogged} user={user} />
       <SecondHeader
         title={title}
         setTitle={setTitle}
         isLogged={isLogged}
         setIsLogged={setIsLogged}
+        user={user}
+        setUser={setUser}
       />
       <PageTitle pageName={pageName} />
       <Outlet
