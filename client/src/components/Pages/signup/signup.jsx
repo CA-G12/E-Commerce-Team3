@@ -46,9 +46,8 @@ function Signup() {
   console.log(setIsLogged);
   setPageName('Sign Up');
   const register = async (e) => {
+    e.preventDefault();
     try {
-      setIsLogged(true);
-      e.preventDefault();
       setLoading(true);
       await signSh.validate({
         username,
@@ -65,11 +64,12 @@ function Signup() {
         avatar,
       });
       setIsLogged(true);
-      setIsLogged(false);
+      setLoading(false);
       toast(`hello ${res.data.username}`);
       navigate('/');
     } catch (error) {
       setIsLogged(false);
+      setLoading(false);
       let errorMessage = '';
       if (error.errors instanceof Array) {
         errorMessage = error.errors[0];
