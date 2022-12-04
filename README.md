@@ -1,6 +1,6 @@
 # Ecommerce-React
 
-## [Live Server](http://ecommerce-team3-g12.herokuapp.com/)
+## [Live Server](https://store-6rd4.onrender.com/)
 ---
 
 ## Description:
